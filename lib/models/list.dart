@@ -1,0 +1,30 @@
+
+class Items {
+  final String id;
+  final String title;
+  final String imageUrl;
+  final double price;
+  final String description;
+
+
+  Items({
+    required this.id,
+    required this.title,
+    required this.imageUrl,
+    required this.price,
+    required this.description,
+});
+}
+
+
+class category{
+  final String id;
+  final String title;
+  final String imageUrl;
+
+  category({
+    required this.id,
+    required this.title,
+    required this.imageUrl
+});
+}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "675975924362",
+    "project_id": "inferno-app-dbdb0",
+    "storage_bucket": "inferno-app-dbdb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675975924362:android:fea5e2887e36d2df567b73",
+        "android_client_info": {
+          "package_name": "com.example.inferno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675975924362-569vjha19k7mdi9cpj0govfvhk273quo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.inferno",
+            "certificate_hash": "1117c7f3890db9878deb7b354d37f470090cd231"
+          }
+        },
+        {
+          "client_id": "675975924362-7gt44g9gv5c7t4jflkjc5tohqkqutv7h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTbh13ULv33QwdMz5kO8vrHGWrTJOidOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "675975924362-7gt44g9gv5c7t4jflkjc5tohqkqutv7h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
