@@ -1,0 +1,7 @@
+Target dependency graph (3 targets)
+Flutter in Pods
+video_player in Pods, depends on:
+Flutter in Pods (explicit)
+Pods-Runner in Pods, depends on:
+Flutter in Pods (explicit)
+video_player in Pods (explicit)
