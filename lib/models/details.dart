@@ -1,6 +1,6 @@
 import '../models/list.dart';
 
-List<Items> FOOD_ITEM =  [
+const FOOD_ITEM =  [
   Items(
       id: 't1',
       title: 'Pizza',
@@ -43,7 +43,7 @@ List<Items> FOOD_ITEM =  [
 ];
 
 
-List<category> Categories = [
+const Categories = [
   category(
       id: 't1',
       title: 'Appetizers',

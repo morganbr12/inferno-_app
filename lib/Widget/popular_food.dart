@@ -72,6 +72,23 @@ class PopularFood extends StatelessWidget {
                       ),
                     ),
                   ),
+                    
+                    
+                    Positioned(
+                      top: 10,
+                      right: 10,
+                        child: InkWell(
+                          onTap: () {},
+                          child: Image.asset(
+                              'assets/images/icons/flat-color-icons_like.png',
+                            color: Colors.grey,
+                            scale: 0.8,
+                          ),
+                        ),
+                    ),
+                    
+                    
+                    
                     Positioned(
                       top: 127.sp,
                       bottom: 0.sp,

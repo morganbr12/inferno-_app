@@ -11,6 +11,11 @@ class ChooseFoodItem extends StatelessWidget {
       this.imageUrl,
       {Key? key}) : super(key: key);
 
+
+  void toCatergoryPageScreen(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed('');
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

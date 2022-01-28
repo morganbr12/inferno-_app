@@ -37,7 +37,10 @@ dependencies:
   introduction_screen: ^2.1.0
   flutter_screenutil: ^5.0.2
   carousel_slider: ^4.0.0
+  google_maps_flutter: ^2.1.1
+  http: ^0.13.4
   firebase_auth: ^3.3.5
+  firebase_core: ^1.11.0
 
 dev_dependencies:
   flutter_test:
@@ -89,6 +92,12 @@ flutter:
     - assets/images/icons/akar-icons_heart.png
     - assets/images/icons/flat-color-icons_like.png
     - assets/images/icons/alert-circle.png
+    - assets/images/log.png
+    - assets/images/ryder/ryder1.png
+    - assets/images/icons/carbon_phone.png
+    - assets/images/icons/clock.png
+    - assets/images/icons/home.png
+    - assets/images/icons/codicon_live-share.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

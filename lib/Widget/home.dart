@@ -54,41 +54,45 @@ class HomeBody extends StatelessWidget {
               children: [
                  Padding(
                    padding: const EdgeInsets.only(left: 8.0),
-                   child: Text(
-                      'Popular Now',
-                    style: Theme.of(context).textTheme.headline2
+                   child: Card(
+                     color: Colors.transparent,
+                     elevation: 3,
+                     child: Text(
+                        'All',
+                      style: Theme.of(context).textTheme.headline2
                 ),
+                   ),
                  ),
-                InkWell(
-                  onTap: () => toViewAllPage(context),
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Row(
-                      children: [
-                        const Text(
-                          "View all",
-                          style: TextStyle(
-                            color: Color.fromRGBO(203, 160, 68, 1),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(color: const Color.fromRGBO(203, 160, 68, 1),)
-                          ),
-                            child: const Icon(
-                                Icons.arrow_forward_ios_sharp,
-                              size: 13,
-                              color: Color.fromRGBO(203, 160, 68, 1),
-                            ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
+                // InkWell(
+                //   onTap: () => toViewAllPage(context),
+                //   child: Padding(
+                //     padding: const EdgeInsets.only(right: 8.0),
+                //     child: Row(
+                //       children: [
+                //         const Text(
+                //           "View all",
+                //           style: TextStyle(
+                //             color: Color.fromRGBO(203, 160, 68, 1),
+                //           ),
+                //         ),
+                //         const SizedBox(
+                //           width: 6,
+                //         ),
+                //         Container(
+                //           decoration: BoxDecoration(
+                //             shape: BoxShape.circle,
+                //             border: Border.all(color: const Color.fromRGBO(203, 160, 68, 1),)
+                //           ),
+                //             child: const Icon(
+                //                 Icons.arrow_forward_ios_sharp,
+                //               size: 13,
+                //               color: Color.fromRGBO(203, 160, 68, 1),
+                //             ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // )
               ],
             ),
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../screens/signup_screen.dart';
 
@@ -29,14 +30,16 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const Text('Welcome Back', style: TextStyle(
+                const Text(
+                  'Welcome Back',
+                  style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 34,
                   color: Colors.white,
                 ),
                 ),
-                const SizedBox(
-                  height: 70,
+                SizedBox(
+                  height: 70.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -60,8 +63,8 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: 10.w,
                     ),
                     Container(
                       padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
@@ -85,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
 
-                const SizedBox(height: 20,),
+               SizedBox(height: 20.h,),
 
 
                 ElevatedButton(
@@ -107,8 +110,8 @@ class LoginScreen extends StatelessWidget {
                     ),
                 ),
 
-                const SizedBox(
-                  height: 15,
+                SizedBox(
+                  height: 15.h,
                 ),
 
                 Row(
@@ -119,7 +122,11 @@ class LoginScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUpScreen()));
+                      Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => SignUpScreen(),
+                          ),
+                      );
                     },
                       child: const Text(
                         'Sign Up',
@@ -129,7 +136,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     )
                   ],
-                )
+                ),
               ],
             ),
           )

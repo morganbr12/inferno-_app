@@ -3,6 +3,10 @@
    <application
         android:label="inferno"
         android:icon="@mipmap/ic_launcher">
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyA3f0sSGGnbVPEmIhp6ljbTiYIAEZ0Om8w"/>
+
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

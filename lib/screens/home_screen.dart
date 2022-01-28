@@ -1,20 +1,26 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:inferno/screens/love.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 import '../Widget/home.dart';
 import '../screens/nofication.dart';
 import '../screens/cart_screen.dart';
+import '../models/notificationList.dart';
 
 class InfernoHomePage extends StatefulWidget {
-  const InfernoHomePage({Key? key}) : super(key: key);
+
+
+  const InfernoHomePage(
+
+      {Key? key}) : super(key: key);
 
   @override
   State<InfernoHomePage> createState() => _InfernoHomePageState();
 }
 
 class _InfernoHomePageState extends State<InfernoHomePage> {
-
 
   int _selectedIndex = 0;
 
@@ -24,6 +30,8 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
     NotificationArea(),
     CartScreen(),
   ];
+
+  static List<NotificationList> get title => listNotification;
 
   void _onTapItem(int index) {
     setState(() {
@@ -41,11 +49,20 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
     Navigator.of(context).pushNamed('/profile');
   }
 
+  void toCartScreen(BuildContext ctx) {
+    Navigator.of(context).pushNamed('/cart_fill');
+  }
+
+  void toTrackingPage(ctx2) {
+    Navigator.of(ctx2).pushNamed('/tracking');
+  }
+
   @override
   Widget build(BuildContext context) {
 
     final title = Container(
       margin: const EdgeInsets.all(6),
+      padding: const EdgeInsets.only(right: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -53,13 +70,19 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
             size: 20,
             color: Theme.of(context).primaryColor,
           ),
-          Text(
-              'Madina, Accra',
-            style: Theme.of(context).appBarTheme.titleTextStyle,
+          Padding(
+            padding: const EdgeInsets.only(left: 6.0),
+            child: Text(
+                'Madina, Accra',
+              style: Theme.of(context).appBarTheme.titleTextStyle,
+            ),
           ),
-          Icon(
-              Icons.keyboard_arrow_down_sharp,
-            color: Theme.of(context).primaryColor,
+          Padding(
+            padding: const EdgeInsets.only(left: 6.0),
+            child: Icon(
+                Icons.keyboard_arrow_down_sharp,
+              color: Theme.of(context).primaryColor,
+            ),
           )
         ],
       ),
@@ -71,20 +94,29 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
         title: title,
         centerTitle: true,
         leading: Container(
-          margin: const EdgeInsets.only(left: 10, bottom: 10, top: 5),
+          margin: const EdgeInsets.only(left: 15, bottom: 15, top: 10),
 
-          child: CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            child: IconButton(
-              onPressed: () => toProfileScreen(context),
-              icon: const Icon(
-                Icons.person,
-                color: Colors.grey,
-              ),
-            ),
+          child: InkWell(
+            onTap: () => toProfileScreen(context),
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).accentColor,
+              child: const Icon(
+                    Icons.person,
+                    color: Colors.grey,
+                  ),
+                ),
           ),
-        ),
-      ),
+            ),
+        actions: [
+          IconButton(
+              onPressed: () => toCartScreen(context),
+              icon: Icon(
+                  Icons.shopping_cart,
+                color: Theme.of(context).accentColor,
+              )
+          )
+        ],
+          ),
 
 
          body: SafeArea(
@@ -101,35 +133,41 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
         backgroundColor: Colors.white,
       ),
 
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.white,
-        backgroundColor: Theme.of(context).primaryColor,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
-        type: BottomNavigationBarType.fixed,
-        selectedFontSize: 12,
-        currentIndex: _selectedIndex,
-        onTap: _onTapItem,
-        items: const <BottomNavigationBarItem> [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-            label: 'Home'
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.trip_origin),
-            label: 'love'
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.notifications),
-              label: 'Notification'
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
-              label: 'Cart'
-          )
-        ],
+      bottomNavigationBar: SizedBox(
+        height: 58.h,
+        child: BottomNavigationBar(
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.white,
+          backgroundColor: Theme.of(context).primaryColor,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
+          type: BottomNavigationBarType.fixed,
+          selectedFontSize: 12,
+          currentIndex: _selectedIndex,
+          onTap: _onTapItem,
+          items: <BottomNavigationBarItem> [
+            const BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+              label: 'Home'
+            ),
+            const BottomNavigationBarItem(
+                icon: Icon(Icons.trip_origin),
+              label: 'love'
+            ),
+            const BottomNavigationBarItem(
+                icon: Icon(Icons.notifications),
+                label: 'Notification'
+            ),
+            BottomNavigationBarItem(
+
+                icon: InkWell(
+                  onTap: () => toTrackingPage(context),
+                    child: const Icon(Icons.directions_car)),
+                label: 'Cart'
+            )
+          ],
+        ),
       ),
     );
   }

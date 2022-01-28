@@ -27,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
             Container(
               height: 363.h,
               width: MediaQuery.of(context).size.width,
-              margin: const EdgeInsets.only(left: 5, right: 5, bottom: 5, top: 0),
+              margin: const EdgeInsets.only(left: 5, right: 5, bottom: 15, top: 0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: const Color.fromRGBO(22, 22, 34, 1)
@@ -43,8 +43,8 @@ class WelcomeScreen extends StatelessWidget {
                     color: Colors.grey,
                   ),
 
-                  const SizedBox(
-                    height: 43,
+                  SizedBox(
+                    height: 33.h,
                   ),
 
                   Expanded(
@@ -57,7 +57,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
 
                   SizedBox(
-                    height: 33.h,
+                    height: 23.h,
                   ),
 
                   ElevatedButton(

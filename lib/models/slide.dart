@@ -6,27 +6,27 @@ class Slider {
   final String description;
 
 
-  Slider({
+  const Slider({
     required this.title,
     required this.description,
 });
 }
 
 
-final SliderList = [
+const SliderList = [
   Slider(
       title: 'The Fastest In Delivery Food',
       description: 'Our objective is to fill your stomach'
-      'with tasty meals and deliver it quickly.',
+      ' with tasty meals and deliver it quickly.',
   ),
   Slider(
     title: 'The Fastest In Delivery Food',
     description: 'Our objective is to fill your stomach'
-        'with tasty meals and deliver it quickly.',
+        ' with tasty meals and deliver it quickly.',
   ),
   Slider(
     title: 'The Fastest In Delivery Food',
     description: 'Our objective is to fill your stomach'
-        'with tasty meals and deliver it quickly.',
+        ' with tasty meals and deliver it quickly.',
   )
 ];

@@ -7,7 +7,7 @@ class Items {
   final String description;
 
 
-  Items({
+  const Items({
     required this.id,
     required this.title,
     required this.imageUrl,
@@ -22,7 +22,7 @@ class category{
   final String title;
   final String imageUrl;
 
-  category({
+  const category({
     required this.id,
     required this.title,
     required this.imageUrl

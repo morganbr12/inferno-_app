@@ -60,7 +60,7 @@ class ViewFood extends StatelessWidget {
                   ),
                   Container(
                     height: 44.h,
-                    width: 105.w,
+                    width: 110.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Theme.of(context).primaryColor

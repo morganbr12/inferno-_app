@@ -18,8 +18,8 @@ class SliderItem extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 72.h,
-          width: 163.w,
+          // height: 72.h,
+          width: 183.w,
           child: Text(
             SliderList[index].title,
             textAlign: TextAlign.center,
@@ -32,7 +32,7 @@ class SliderItem extends StatelessWidget {
         ),
 
         SizedBox(
-          height: 23.h,
+          height: 18.h,
         ),
 
         Container(
