@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
-class VerifySignUp extends StatefulWidget {
-  const VerifySignUp({Key? key}) : super(key: key);
+class VerifySignUp extends StatelessWidget {
 
-  @override
-  _VerifySignUpState createState() => _VerifySignUpState();
-}
+  VerifySignUp(
+      {Key? key}) : super(key: key);
 
-class _VerifySignUpState extends State<VerifySignUp> {
-  
+
   void toCodeVerification(BuildContext ctx) {
-    Navigator.of(context).pushNamed('/codeverify');
+    Navigator.of(ctx).pushNamed('/codeverify');
   }
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
+
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+    final getPhoneNumber = ModalRoute.of(context)!.settings.arguments;
+
+    final number = getPhoneNumber!=[TextEditingController];
+
+
+
+
     return Scaffold(
-      backgroundColor: Color.fromRGBO(22, 22, 34, 1),
+      backgroundColor: const Color.fromRGBO(22, 22, 34, 1),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -47,7 +60,7 @@ class _VerifySignUpState extends State<VerifySignUp> {
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: Text(
                       'We have sent you an SMS with a code to the number'
-                          ' +1234567890',
+                          ' $getPhoneNumber',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
@@ -96,9 +109,11 @@ class _VerifySignUpState extends State<VerifySignUp> {
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white.withOpacity(0.5),
                   ),
-                  child: const TextField(
+                  child: TextField(
                     cursorColor: Colors.black,
-                    decoration: InputDecoration(
+                      // controller: number,
+
+                    decoration: const InputDecoration(
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10)

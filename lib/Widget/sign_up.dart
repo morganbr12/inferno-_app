@@ -36,7 +36,12 @@ class _SignUpPageState extends State<SignUpPage> {
             'phoneNumber': phoneNumberController.text,
             'email': emailController.text// 42
           })
-          .then((value) => print("User Added"))
+          .then((value) => Navigator.of(context).pushNamedAndRemoveUntil(
+        '/verifysignup',
+            (route) => false, arguments:
+          phoneNumberController.text as TextEditingController,
+      ),
+      )
           .catchError((error) => print("Failed to add user: $error"));
     }
 

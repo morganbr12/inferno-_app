@@ -88,7 +88,7 @@ class InfernoApp extends StatelessWidget {
           '/welcome': (ctx) => const WelcomeScreen(),
           '/login': (ctx) => const LoginScreen(),
           '/verifylogin': (ctx) => const VerifyLogin(),
-          '/verifysignup': (ctx) => const VerifySignUp(),
+          '/verifysignup': (ctx) =>  VerifySignUp(),
           '/codeverify': (ctx) => const CodeVerification(),
           '/homepage': (ctx) => const InfernoHomePage(),
           '/viewfood': (ctx) => const ViewFood(),
