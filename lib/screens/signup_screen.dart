@@ -13,8 +13,13 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+
+    final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Stack(
+        alignment: AlignmentDirectional.center,
       children: [
         Image.asset(
         'assets/images/background/Component.png',
@@ -22,15 +27,12 @@ class SignUpScreen extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         Container(
-          padding: const EdgeInsets.only(top: 20),
-          child: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: const Icon(Icons.arrow_back),
+          width: width,
+          height: height,
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.7),
           ),
         ),
-        // SignUpPage(),
         SignUpPage()
       ],
         ),
