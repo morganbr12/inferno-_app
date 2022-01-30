@@ -12,6 +12,8 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final bool users1 = false;
+
   TextEditingController firstNameController = TextEditingController();
   TextEditingController secondNameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
@@ -32,6 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     Future<void> addUser() {
       // Call the user's CollectionReference to add a new user
+
       return users
           .add({
             'userId': '',

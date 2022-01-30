@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+// import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/otp_text_field.dart';
+import 'package:otp_text_field/style.dart';
 
 class CodeVerification extends StatefulWidget {
   const CodeVerification({Key? key}) : super(key: key);
@@ -13,9 +15,7 @@ class _CodeVerificationState extends State<CodeVerification> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(22, 22, 34, 1),
-      appBar: AppBar(
-
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -27,8 +27,7 @@ class _CodeVerificationState extends State<CodeVerification> {
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  letterSpacing: 1
-              ),
+                  letterSpacing: 1),
             ),
             const SizedBox(
               height: 40,
@@ -39,10 +38,8 @@ class _CodeVerificationState extends State<CodeVerification> {
                   fontSize: 13,
                   // fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  letterSpacing: 1
-              ),
+                  letterSpacing: 1),
             ),
-
             const SizedBox(
               height: 30,
             ),
@@ -50,100 +47,42 @@ class _CodeVerificationState extends State<CodeVerification> {
               // crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: 50,
-                  width: 70,
-                  margin: const EdgeInsets.only(right: 15),
-                  decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(18)
-                  ),
-                  child: const TextField(
-                    textAlign: TextAlign.center,
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10)
+                OTPTextField(
+                    // controller: otpController,
+                    length: 4,
+                    width: MediaQuery.of(context).size.width - 60,
+                    textFieldAlignment: MainAxisAlignment.spaceAround,
+                    fieldWidth: 60,
+                    otpFieldStyle: OtpFieldStyle(
+                      backgroundColor: Colors.white,
+                      borderColor: Colors.white,
                     ),
-                  ),
-                ),
-                Container(
-                  height: 50,
-                  width: 70,
-                  margin: const EdgeInsets.only(right: 15),
-                  decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(18)
-                  ),
-                  child: const TextField(
-                    textAlign: TextAlign.center,
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10)
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 50,
-                  width: 70,
-                  margin: const EdgeInsets.only(right: 15),
-                  decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(18)
-                  ),
-                  child: const TextField(
-                    textAlign: TextAlign.center,
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10)
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 50,
-                  width: 70,
-                  decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(18)
-                  ),
-                  child: const TextField(
-                    textAlign: TextAlign.center,
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10)
-                    ),
-                  ),
-                ),
+                    fieldStyle: FieldStyle.box,
+                    outlineBorderRadius: 15,
+                    style: const TextStyle(fontSize: 17),
+                    onChanged: (pin) {
+                      print("Changed: " + pin);
+                    },
+                    onCompleted: (pin) {
+                      print("Completed: " + pin);
+                    }),
               ],
             ),
             const SizedBox(
               height: 20,
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                    'I didn\'t  receive code?',
-                  style: TextStyle(
-                    color: Theme.of(context).accentColor
-                  ),
+                  'I didn\'t  receive code?',
+                  style: TextStyle(color: Theme.of(context).accentColor),
                 ),
-
                 TextButton(
                   onPressed: () {},
                   child: Text(
-                      'Resend a new code',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor
-                    ),
+                    'Resend a new code',
+                    style: TextStyle(color: Theme.of(context).primaryColor),
                   ),
                 ),
               ],
@@ -159,8 +98,7 @@ class _CodeVerificationState extends State<CodeVerification> {
                   ),
                   padding: MaterialStateProperty.all(
                     const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  )
-              ),
+                  )),
               child: const Text(
                 'Verify',
                 style: TextStyle(
