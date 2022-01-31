@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
-
+import 'dart:convert';
 
 class VerifyLogin extends StatelessWidget {
   const VerifyLogin({Key? key}) : super(key: key);
-
 
   void toInfernoHomePage(BuildContext ctx) {
     Navigator.of(ctx).popAndPushNamed('/homepage');
@@ -35,27 +33,24 @@ class VerifyLogin extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
-                    'Verify',
+                  'Verify',
                   style: TextStyle(
-                    fontSize: 34,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    letterSpacing: 1
-                  ),
+                      fontSize: 34,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      letterSpacing: 1),
                 ),
                 const SizedBox(
                   height: 40,
                 ),
                 const Text(
-                    'Enter the code that has been sent to your phone',
+                  'Enter the code that has been sent to your phone',
                   style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                    letterSpacing: 1
-                  ),
+                      letterSpacing: 1),
                 ),
-
                 const SizedBox(
                   height: 30,
                 ),
@@ -69,16 +64,15 @@ class VerifyLogin extends StatelessWidget {
                       margin: const EdgeInsets.only(right: 15),
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(18)
-                      ),
+                          borderRadius: BorderRadius.circular(18)),
                       child: const TextField(
                         textAlign: TextAlign.center,
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                             enabledBorder: InputBorder.none,
                             focusedBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10)
-                        ),
+                            contentPadding:
+                                EdgeInsets.fromLTRB(10, 10, 10, 10)),
                       ),
                     ),
                     Container(
@@ -87,16 +81,15 @@ class VerifyLogin extends StatelessWidget {
                       margin: const EdgeInsets.only(right: 15),
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(18)
-                      ),
+                          borderRadius: BorderRadius.circular(18)),
                       child: const TextField(
                         textAlign: TextAlign.center,
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                             enabledBorder: InputBorder.none,
                             focusedBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10)
-                        ),
+                            contentPadding:
+                                EdgeInsets.fromLTRB(10, 10, 10, 10)),
                       ),
                     ),
                     Container(
@@ -105,16 +98,15 @@ class VerifyLogin extends StatelessWidget {
                       margin: const EdgeInsets.only(right: 15),
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(18)
-                      ),
+                          borderRadius: BorderRadius.circular(18)),
                       child: const TextField(
                         textAlign: TextAlign.center,
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                             enabledBorder: InputBorder.none,
                             focusedBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10)
-                        ),
+                            contentPadding:
+                                EdgeInsets.fromLTRB(10, 10, 10, 10)),
                       ),
                     ),
                     Container(
@@ -122,16 +114,15 @@ class VerifyLogin extends StatelessWidget {
                       width: 70,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(18)
-                      ),
+                          borderRadius: BorderRadius.circular(18)),
                       child: const TextField(
                         textAlign: TextAlign.center,
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                             enabledBorder: InputBorder.none,
                             focusedBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10)
-                        ),
+                            contentPadding:
+                                EdgeInsets.fromLTRB(10, 10, 10, 10)),
                       ),
                     ),
                   ],
@@ -147,8 +138,7 @@ class VerifyLogin extends StatelessWidget {
                       ),
                       padding: MaterialStateProperty.all(
                         const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      )
-                  ),
+                      )),
                   child: const Text(
                     'Verify',
                     style: TextStyle(

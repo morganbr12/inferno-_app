@@ -108,7 +108,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               }
                             },
                             decoration: const InputDecoration(
-                              hintText: 'First Name',
+                              hintText: 'First name',
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               contentPadding:
@@ -134,7 +134,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             onSaved: (value2) {},
                             controller: secondNameController,
                             decoration: const InputDecoration(
-                              hintText: 'Last Name',
+                              hintText: 'Last name',
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               contentPadding:
@@ -159,7 +159,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             },
                             controller: phoneNumberController,
                             decoration: const InputDecoration(
-                              hintText: 'Phone Number',
+                              hintText: 'Phone number...',
 
                               // prefixIcon: Padding(
                               //   padding: EdgeInsets.symmetric(vertical: 9.0),
@@ -196,7 +196,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             onSaved: (value4) {},
                             controller: emailController,
                             decoration: const InputDecoration(
-                              hintText: 'Email',
+                              hintText: 'Email...',
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               contentPadding:

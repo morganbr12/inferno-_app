@@ -7,10 +7,11 @@ import 'firebase_options.dart';
 import './screens/cart_screen.dart';
 import './screens/cart_fill.dart';
 import './screens/welocme_screen.dart';
-import './screens/Login_screen.dart';
-import './screens/verify_login.dart';
-import './screens/verify_signup.dart';
-import './screens/code_verify.dart';
+import 'auth/auth_login_screen.dart';
+import './auth/otp_code_verify.dart';
+import './auth/otp_verify_login.dart';
+// import './auth/signup_screen.dart';
+import './auth/verify_signup.dart';
 import './screens/home_screen.dart';
 import './Widget/view_food.dart';
 import './screens/view_all_screen.dart';
@@ -88,7 +89,7 @@ class InfernoApp extends StatelessWidget {
           '/welcome': (ctx) => const WelcomeScreen(),
           '/login': (ctx) => const LoginScreen(),
           '/verifylogin': (ctx) => const VerifyLogin(),
-          '/verifysignup': (ctx) =>  VerifySignUp(),
+          '/verifysignup': (ctx) => VerifySignUp(),
           '/codeverify': (ctx) => const CodeVerification(),
           '/homepage': (ctx) => const InfernoHomePage(),
           '/viewfood': (ctx) => const ViewFood(),

@@ -49,13 +49,13 @@ class _CodeVerificationState extends State<CodeVerification> {
               children: [
                 OTPTextField(
                     // controller: otpController,
-                    length: 4,
-                    width: MediaQuery.of(context).size.width - 60,
+                    length: 6,
+                    width: MediaQuery.of(context).size.width,
                     textFieldAlignment: MainAxisAlignment.spaceAround,
-                    fieldWidth: 60,
+                    fieldWidth: 48,
                     otpFieldStyle: OtpFieldStyle(
-                      backgroundColor: Colors.white,
-                      borderColor: Colors.white,
+                      backgroundColor: Colors.grey.withOpacity(0.8),
+                      borderColor: Colors.grey.withOpacity(0.8),
                     ),
                     fieldStyle: FieldStyle.box,
                     outlineBorderRadius: 15,
