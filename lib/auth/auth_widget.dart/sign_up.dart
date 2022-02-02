@@ -14,10 +14,10 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final bool users1 = false;
 
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController secondNameController = TextEditingController();
+  TextEditingController fullNameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   void toVerifySignUp(BuildContext ctx) {
     Navigator.of(context).pushNamed('/verifysignup');
@@ -30,28 +30,28 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     // Create a CollectionReference called users that references the firestore collection
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    // CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-    Future<void> addUser() {
-      // Call the user's CollectionReference to add a new user
+    // Future<void> addUser() {
+    //   // Call the user's CollectionReference to add a new user
 
-      return users
-          .add({
-            'userId': '',
-            'firstName': firstNameController.text, // John Doe
-            'lastName': secondNameController.text, // Stokes and Sons
-            'phoneNumber': phoneNumberController.text,
-            'email': emailController.text // 42
-          })
-          .then(
-            (value) => Navigator.of(context).pushNamedAndRemoveUntil(
-              '/verifysignup',
-              (route) => false,
-              arguments: phoneNumberController.text,
-            ),
-          )
-          .catchError((error) => print("Failed to add user: $error"));
-    }
+    //   return users
+    //       .add({
+    //         'userId': '',
+    //         'firstName': firstNameController.text, // John Doe
+    //         'lastName': secondNameController.text, // Stokes and Sons
+    //         'phoneNumber': phoneNumberController.text,
+    //         'email': emailController.text // 42
+    //       })
+    //       .then(
+    //         (value) => Navigator.of(context).pushNamedAndRemoveUntil(
+    //           '/verifysignup',
+    //           (route) => false,
+    //           arguments: phoneNumberController.text,
+    //         ),
+    //       )
+    //       .catchError((error) => print("Failed to add user: $error"));
+    // }
 
     final GlobalKey _keyForm = GlobalKey();
     return SingleChildScrollView(
@@ -101,14 +101,14 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: TextFormField(
                             cursorColor: Colors.black,
                             onSaved: (value) {},
-                            controller: firstNameController,
+                            controller: fullNameController,
                             validator: (value1) {
                               if (value1!.isEmpty) {
                                 return 'first required';
                               }
                             },
                             decoration: const InputDecoration(
-                              hintText: 'First name',
+                              hintText: 'Full name',
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               contentPadding:
@@ -132,9 +132,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               }
                             },
                             onSaved: (value2) {},
-                            controller: secondNameController,
+                            controller: phoneNumberController,
                             decoration: const InputDecoration(
-                              hintText: 'Last name',
+                              hintText: 'Phone number',
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               contentPadding:
@@ -159,7 +159,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             },
                             controller: phoneNumberController,
                             decoration: const InputDecoration(
-                              hintText: 'Phone number...',
+                              hintText: 'Email...',
 
                               // prefixIcon: Padding(
                               //   padding: EdgeInsets.symmetric(vertical: 9.0),
@@ -193,10 +193,13 @@ class _SignUpPageState extends State<SignUpPage> {
                                 return 'Email required';
                               }
                             },
-                            onSaved: (value4) {},
-                            controller: emailController,
+                            onSaved: (value) {
+                              passwordController =
+                                  value as TextEditingController;
+                            },
+                            controller: passwordController,
                             decoration: const InputDecoration(
-                              hintText: 'Email...',
+                              hintText: 'Password...',
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               contentPadding:
@@ -213,7 +216,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   // ElevatedButton
 
                   ElevatedButton(
-                    onPressed: addUser,
+                    onPressed: () {},
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                           const Color.fromRGBO(203, 160, 68, 1),

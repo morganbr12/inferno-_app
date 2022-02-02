@@ -14,7 +14,7 @@ class _CodeVerificationState extends State<CodeVerification> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(22, 22, 34, 1),
+      backgroundColor: const Color.fromRGBO(22, 22, 34, 1),
       appBar: AppBar(),
       body: Center(
         child: Column(
