@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:inferno/auth/auth_controllers/authMode.dart';
-import 'package:provider/provider.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -274,7 +272,6 @@ class _SignUpPageState extends State<SignUpPage> {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((value) => {
-                _isLoading = true,
                 postDetailsToFirestore(),
               })
           .catchError((e) {
@@ -303,7 +300,7 @@ class _SignUpPageState extends State<SignUpPage> {
         .collection("users")
         .doc(user.uid)
         .set(authModel.toMap());
-
+    _isLoading = true;
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/homepage', (route) => false);
   }

@@ -252,11 +252,13 @@ class _LoginScreenState extends State<LoginScreen> {
             email: email,
             password: password,
           )
-          .then((value) => {
-                isLodaing = true,
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil('/homepage', (route) => false)
-              })
+          .then(
+            (value) => {
+              isLodaing = true,
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/homepage', (route) => false)
+            },
+          )
           .catchError((e) {
         return Future.error(e).toString();
       });
