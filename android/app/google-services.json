@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "675975924362",
+    "firebase_url": "https://inferno-app-dbdb0-default-rtdb.firebaseio.com",
     "project_id": "inferno-app-dbdb0",
     "storage_bucket": "inferno-app-dbdb0.appspot.com"
   },
@@ -37,6 +38,13 @@
             {
               "client_id": "675975924362-7gt44g9gv5c7t4jflkjc5tohqkqutv7h.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "675975924362-50r2c826ub6s4bi17a7ihsgqnfa95752.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.senkwa.inferno"
+              }
             }
           ]
         }

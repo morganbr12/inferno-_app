@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,6 +14,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
+  var isLodaing = false;
+
   void toVerifyPage(BuildContext ctx) {
     Navigator.of(ctx).pushNamed('/verifylogin');
   }
@@ -20,6 +23,8 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
+
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +42,17 @@ class _LoginScreenState extends State<LoginScreen> {
         controller: emailController,
         onSaved: (value) {
           emailController.text = value!;
+        },
+        validator: (value) {
+          if (value!.isEmpty) {
+            return ("Please Enter Your Email");
+          }
+          // reg expression for email validation
+          if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+              .hasMatch(value)) {
+            return ("Please enter a valid email");
+          }
+          return null;
         },
         decoration: const InputDecoration(
             enabledBorder: InputBorder.none,
@@ -60,6 +76,16 @@ class _LoginScreenState extends State<LoginScreen> {
         obscureText: true,
         cursorColor: Colors.white,
         controller: passwordController,
+        validator: (value) {
+          RegExp regex = RegExp(r'^.{6,}$');
+          if (value!.isEmpty) {
+            return ("Please password is required");
+          }
+
+          if (!regex.hasMatch(value)) {
+            return ("Enter a valid password(Min. 6 characters)");
+          }
+        },
         onSaved: (value) {
           passwordController.text = value!;
         },
@@ -74,14 +100,20 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     final button = ElevatedButton(
-      onPressed: () => toVerifyPage(context),
+      onPressed: () {
+        signIn(
+          passwordController.text,
+          emailController.text,
+        );
+      },
       style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-            const Color.fromRGBO(203, 160, 68, 1),
-          ),
-          padding: MaterialStateProperty.all(
-            const EdgeInsets.fromLTRB(20, 0, 20, 0),
-          )),
+        backgroundColor: MaterialStateProperty.all(
+          const Color.fromRGBO(203, 160, 68, 1),
+        ),
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.fromLTRB(20, 0, 20, 0),
+        ),
+      ),
       child: const Text(
         'Sign In',
         style: TextStyle(
@@ -92,117 +124,142 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     return Scaffold(
-      body: Stack(
-        children: [
-          Image.asset(
-            'assets/images/background/Component.jpg',
-            fit: BoxFit.cover,
-            height: double.maxFinite,
-            width: MediaQuery.of(context).size.width,
-          ),
-          Container(
-            height: double.maxFinite,
-            width: double.maxFinite,
-            decoration: BoxDecoration(color: Colors.black.withOpacity(0.7)),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+      body: isLodaing == true
+          ? CircleAvatar()
+          : Stack(
               children: [
                 Image.asset(
-                  'assets/images/logoInferno.png',
-                  scale: 1.2,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  'Welcome Back',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 34,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(
-                  height: 20.h,
+                  'assets/images/background/Component.jpg',
+                  fit: BoxFit.cover,
+                  height: double.maxFinite,
+                  width: MediaQuery.of(context).size.width,
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 280,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  padding: const EdgeInsets.only(top: 10),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).backgroundColor.withOpacity(0.7),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Form(
-                              key: _formKey,
-                              child: Column(
+                  height: double.maxFinite,
+                  width: double.maxFinite,
+                  decoration:
+                      BoxDecoration(color: Colors.black.withOpacity(0.7)),
+                ),
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/logoInferno.png',
+                        scale: 1.2,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Text(
+                        'Welcome Back',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 34,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 280,
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.only(top: 10),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context)
+                              .backgroundColor
+                              .withOpacity(0.7),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  emailLogin,
-                                  SizedBox(
-                                    height: 10.w,
+                                  Form(
+                                    key: _formKey,
+                                    child: Column(
+                                      children: [
+                                        emailLogin,
+                                        SizedBox(
+                                          height: 25.w,
+                                        ),
+                                        passwordFill,
+                                      ],
+                                    ),
                                   ),
-                                  passwordFill,
                                 ],
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        button,
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Don't have an account?",
-                              style: TextStyle(
-                                color: Theme.of(context).accentColor,
+                              SizedBox(
+                                height: 20.h,
                               ),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (_) => SignUpScreen(),
+                              button,
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Don't have an account?",
+                                    style: TextStyle(
+                                      color: Theme.of(context).accentColor,
+                                    ),
                                   ),
-                                );
-                              },
-                              child: const Text(
-                                'Sign Up',
-                                style: TextStyle(
-                                    color: Color.fromRGBO(203, 160, 68, 1)),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (_) => SignUpScreen(),
+                                        ),
+                                      );
+                                    },
+                                    child: const Text(
+                                      'Sign Up',
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(203, 160, 68, 1)),
+                                    ),
+                                  )
+                                ],
                               ),
-                            )
-                          ],
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        height: 40.h,
+                      )
+                    ],
                   ),
-                ),
-                SizedBox(
-                  height: 40.h,
                 )
               ],
             ),
-          )
-        ],
-      ),
     );
+  }
+
+// login in function
+  Future<void> signIn(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
+      await _auth
+          .signInWithEmailAndPassword(
+            email: email,
+            password: password,
+          )
+          .then((value) => {
+                isLodaing = true,
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/homepage', (route) => false)
+              })
+          .catchError((e) {
+        return Future.error(e).toString();
+      });
+    }
   }
 }
