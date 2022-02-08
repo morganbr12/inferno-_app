@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'signup_screen.dart';
 
@@ -20,9 +21,9 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.of(ctx).pushNamed('/verifylogin');
   }
 
-  TextEditingController emailController = TextEditingController();
+  final emailController = TextEditingController();
 
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   final _auth = FirebaseAuth.instance;
 
@@ -40,19 +41,19 @@ class _LoginScreenState extends State<LoginScreen> {
       child: TextFormField(
         cursorColor: Colors.white,
         controller: emailController,
+        keyboardType: TextInputType.emailAddress,
         onSaved: (value) {
           emailController.text = value!;
         },
         validator: (value) {
           if (value!.isEmpty) {
-            return ("Please Enter Your Email");
+            return 'Enter correct email';
           }
-          // reg expression for email validation
-          if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-              .hasMatch(value)) {
-            return ("Please enter a valid email");
+          if (!RegExp(r'^[a-zA-Z0+_.-]+@[a-zA-Z0.-]+.[a-z]').hasMatch(value)) {
+            return "Enter a valid email";
+          } else {
+            return null;
           }
-          return null;
         },
         decoration: const InputDecoration(
             enabledBorder: InputBorder.none,
@@ -246,22 +247,26 @@ class _LoginScreenState extends State<LoginScreen> {
 
 // login in function
   Future<void> signIn(String email, String password) async {
-    if (_formKey.currentState!.validate()) {
-      await _auth
-          .signInWithEmailAndPassword(
-            email: email,
-            password: password,
-          )
-          .then(
-            (value) => {
-              isLodaing = true,
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil('/homepage', (route) => false)
-            },
-          )
-          .catchError((e) {
-        return Future.error(e).toString();
-      });
+    //   if (_formKey.currentState!.validate()) {
+    //     await _auth
+    //         .signInWithEmailAndPassword(email: email, password: password)
+    //         .then((value) {
+    //       Navigator.of(context)
+    //           .pushNamedAndRemoveUntil('/homepage', (route) => false);
+    //       Fluttertoast.showToast(msg: "Login sucessful");
+    //     }).catchError((handleError) {});
+    //   }
+    try {
+      if (_formKey.currentState!.validate()) {
+        await _auth
+            .signInWithEmailAndPassword(email: email, password: password)
+            .then((value) => {
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/homepage', (route) => false)
+                });
+      }
+    } on FirebaseAuthException catch (error) {
+      error.message;
     }
   }
 }
