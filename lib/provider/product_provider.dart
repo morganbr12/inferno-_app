@@ -1,14 +1,22 @@
+import 'package:flutter/material.dart';
+
 import '../models/list.dart';
 
-final List<Items> FOOD_ITEM = [
-  Items(
-      id: 't1',
+class Products with ChangeNotifier {
+  List<Items> FOOD_ITEM = [
+    Items(
+      id: 'a',
       title: 'Pizza',
       imageUrl: 'assets/images/foodImages/pizza.png',
       price: 22,
-      description: ''),
-  Items(
-      id: 't1',
+      description: ' ultimate in burgers. 4 beef patties, '
+          'sandwiched between two fresh mega buns, surrounded '
+          'by an army of veg and encapsulated in 5 cheese slices. '
+          'This is accompanied by a platoon of fries '
+          '[yam, potato, cassava, or cocoyam]',
+    ),
+    Items(
+      id: 'b',
       title: 'Burger',
       imageUrl: 'assets/images/foodImages/burger.png',
       price: 50,
@@ -16,26 +24,56 @@ final List<Items> FOOD_ITEM = [
           'sandwiched between two fresh mega buns, surrounded '
           'by an army of veg and encapsulated in 5 cheese slices. '
           'This is accompanied by a platoon of fries '
-          '[yam, potato, cassava, or cocoyam].'),
-  Items(
-      id: 't1',
+          '[yam, potato, cassava, or cocoyam].',
+    ),
+    Items(
+      id: 'c',
       title: 'Burger',
       imageUrl: 'assets/images/foodImages/kakratua.png',
       price: 22,
-      description: ''),
-  Items(
-      id: 't1',
+      description: ' ultimate in burgers. 4 beef patties, '
+          'sandwiched between two fresh mega buns, surrounded '
+          'by an army of veg and encapsulated in 5 cheese slices. '
+          'This is accompanied by a platoon of fries '
+          '[yam, potato, cassava, or cocoyam]',
+    ),
+    Items(
+      id: 'd',
       title: 'Burger',
       imageUrl: 'assets/images/foodImages/kakratua.png',
-      price: 22,
-      description: ''),
-  Items(
-      id: 't1',
+      price: 50,
+      description: ' ultimate in burgers. 4 beef patties, '
+          'sandwiched between two fresh mega buns, surrounded '
+          'by an army of veg and encapsulated in 5 cheese slices. '
+          'This is accompanied by a platoon of fries '
+          '[yam, potato, cassava, or cocoyam]',
+    ),
+    Items(
+      id: 'e',
       title: 'Burger',
       imageUrl: 'assets/images/foodImages/kakratua.png',
-      price: 22,
-      description: '')
-];
+      price: 70,
+      description: ' ultimate in burgers. 4 beef patties, '
+          'sandwiched between two fresh mega buns, surrounded '
+          'by an army of veg and encapsulated in 5 cheese slices. '
+          'This is accompanied by a platoon of fries '
+          '[yam, potato, cassava, or cocoyam]',
+    )
+  ];
+
+  List<Items> get _FOOD_ITEM {
+    return [...FOOD_ITEM];
+  }
+
+  Items findById(String id) {
+    return FOOD_ITEM.firstWhere((prod) => prod.id == id);
+  }
+
+  void addProduct() {
+    // FOOD_ITEM.add(value);
+    notifyListeners();
+  }
+}
 
 const Categories = [
   category(

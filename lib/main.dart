@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:inferno/auth/auth_controllers/controllers.dart';
+import 'package:inferno/provider/product_provider.dart';
 import 'package:provider/provider.dart';
 // import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'firebase_options.dart';
@@ -47,9 +48,13 @@ class InfernoApp extends StatelessWidget {
             create: (_) => AuthenticationServices(FirebaseAuth.instance),
           ),
           StreamProvider(
-              create: (context) =>
-                  context.read<AuthenticationServices>().authStateChanges,
-              initialData: "/welcome")
+            create: (context) =>
+                context.read<AuthenticationServices>().authStateChanges,
+            initialData: "/welcome",
+          ),
+          ChangeNotifierProvider(
+            create: (ctx) => Products(),
+          ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

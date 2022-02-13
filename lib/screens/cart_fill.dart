@@ -14,15 +14,11 @@ class CartFill extends StatelessWidget {
         appBar: AppBar(
           title: title,
           centerTitle: true,
-
         ),
-
         body: Column(
           children: [
             const CartPage(),
-
           ],
-
         ),
       ),
     );

@@ -1,23 +1,20 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:inferno/provider/product_provider.dart';
+import 'package:provider/provider.dart';
 
 class ViewFood extends StatelessWidget {
   const ViewFood({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final foodDetailsId = ModalRoute.of(context)?.settings.arguments as String;
 
-    final foodDetails = ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
-    final foodName = foodDetails['title'];
-    final foodImageUrl = foodDetails['imageUrl'];
-    final foodPrice = foodDetails['price'];
-    final foodDescription =foodDetails['description'];
+    final loadedProduct =
+        Provider.of<Products>(context, listen: false).findById(foodDetailsId);
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: AppBar(
-        title: const Text(''),
-      ),
+      appBar: AppBar(),
       body: Stack(
         children: [
           Container(
@@ -25,13 +22,11 @@ class ViewFood extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(30),
-              ),
-              color: Theme.of(context).backgroundColor
-            ),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(30),
+                ),
+                color: Theme.of(context).backgroundColor),
           ),
-
           Positioned(
             top: 35.sp,
             left: 0.sp,
@@ -48,11 +43,11 @@ class ViewFood extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: Image.asset(
-                          foodImageUrl.toString(),
+                        loadedProduct.imageUrl.toString(),
                         fit: BoxFit.cover,
                         height: 299.h,
                         width: 324.w,
-          ),
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -62,34 +57,32 @@ class ViewFood extends StatelessWidget {
                     height: 44.h,
                     width: 110.w,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Theme.of(context).primaryColor
-                    ),
+                        borderRadius: BorderRadius.circular(30),
+                        color: Theme.of(context).primaryColor),
                     child: Row(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
                           child: IconButton(
                             splashColor: Theme.of(context).splashColor,
-                              onPressed: () {},
-                              icon: Icon(
-                                  Icons.minimize,
-                                size: 15,
-                                color: Theme.of(context).accentColor,
-                              ),
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.minimize,
+                              size: 15,
+                              color: Theme.of(context).accentColor,
+                            ),
                           ),
                         ),
                         Text(
                           '1',
-                          style: TextStyle(
-                            color: Theme.of(context).accentColor
-                          ),
+                          style:
+                              TextStyle(color: Theme.of(context).accentColor),
                         ),
                         IconButton(
                           splashColor: Theme.of(context).splashColor,
                           onPressed: () {},
                           icon: Icon(
-                              Icons.add,
+                            Icons.add,
                             size: 15,
                             color: Theme.of(context).accentColor,
                           ),
@@ -110,7 +103,7 @@ class ViewFood extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                                '$foodName',
+                              loadedProduct.title,
                               style: Theme.of(context).textTheme.headline2,
                             ),
                             const SizedBox(
@@ -118,30 +111,23 @@ class ViewFood extends StatelessWidget {
                             ),
                             const Text(
                               'Cheesy Mozarella',
-                              style: TextStyle(
-                                fontSize: 11,
-                                color: Colors.grey
-                              ),
+                              style:
+                                  TextStyle(fontSize: 11, color: Colors.grey),
                             ),
                           ],
                         ),
-
-
-
                         Padding(
                           padding: const EdgeInsets.only(top: 2.0),
                           child: Text(
-                            '¢$foodPrice',
+                            '{¢}',
                             style: TextStyle(
-                              fontSize: 30,
-                              color: Theme.of(context).primaryColor
-                            ),
+                                fontSize: 30,
+                                color: Theme.of(context).primaryColor),
                           ),
                         ),
                       ],
                     ),
                   ),
-
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
@@ -152,18 +138,37 @@ class ViewFood extends StatelessWidget {
                             InkWell(
                               onTap: () {},
                               child: Icon(
-                                  Icons.star,
+                                Icons.star,
                                 color: Theme.of(context).accentColor,
                               ),
                             ),
-
                             Padding(
                               padding: const EdgeInsets.only(left: 5.0),
                               child: Text(
-                                  '2,8',
+                                '2,8',
+                                style: TextStyle(
+                                    color: Theme.of(context).accentColor,
+                                    fontSize: 18),
+                              ),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () {},
+                              child: Image.asset(
+                                'assets/images/icons/emojione_fire.png',
+                                color: Theme.of(context).accentColor,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5.0),
+                              child: Text(
+                                '150 kcal',
                                 style: TextStyle(
                                   color: Theme.of(context).accentColor,
-                                  fontSize: 18
+                                  fontSize: 18,
                                 ),
                               ),
                             )
@@ -174,32 +179,12 @@ class ViewFood extends StatelessWidget {
                             InkWell(
                               onTap: () {},
                               child: Image.asset(
-                                  'assets/images/icons/emojione_fire.png',
-                                color: Theme.of(context).accentColor,
-                              ),
+                                  'assets/images/icons/flat-color-icons_alarm-clock.png'),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 5.0),
                               child: Text(
-                                  '150 kcal',
-                                style: TextStyle(
-                                  color: Theme.of(context).accentColor,
-                                    fontSize: 18,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            InkWell(
-                              onTap: () {},
-                              child: Image.asset('assets/images/icons/flat-color-icons_alarm-clock.png'),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5.0),
-                              child: Text(
-                                  '10-15 Min',
+                                '10-15 Min',
                                 style: TextStyle(
                                   color: Theme.of(context).accentColor,
                                   fontSize: 18,
@@ -211,46 +196,36 @@ class ViewFood extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   Container(
                     margin: const EdgeInsets.all(12),
                     child: Text(
-                        foodDescription.toString(),
+                      loadedProduct.description,
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
-
                   const SizedBox(
                     height: 15,
                   ),
-
                   Padding(
-                    padding: const EdgeInsets.only(
-                        left: 35.0,
-                        right: 35.0
-                    ),
+                    padding: const EdgeInsets.only(left: 35.0, right: 35.0),
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Theme.of(context).primaryColor
-                        ),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                              )
-                          )
-                      ),
+                          backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).primaryColor),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ))),
                       onPressed: () {},
                       child: Container(
                         width: double.maxFinite,
-                          padding: const EdgeInsets.only(top: 20, bottom: 20),
-                          child: const Text(
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        child: const Text(
                           'Add to Cart',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 16
-                            ),
-                          ),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
                     ),
                   )

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:inferno/Widget/products.dart';
 
-import '../models/details.dart';
+import '../provider/product_provider.dart';
 import '../Widget/choose_cati.dart';
 import '../Widget/top_container.dart';
-import '../Widget/popular_food.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({Key? key}) : super(key: key);
@@ -64,27 +64,15 @@ class HomeBody extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.6,
-                child: ListView.builder(
-                  itemCount: FOOD_ITEM.length,
-                  itemBuilder: (ctx, i) => PopularFood(
-                    FOOD_ITEM[i].title,
-                    FOOD_ITEM[i].imageUrl,
-                    FOOD_ITEM[i].price,
-                    FOOD_ITEM[i].description,
-                  ),
-                ),
-              ),
-            ),
+            FoodProducts(),
           ],
         ),
       ),
     );
   }
 }
+
+
 
 // children: FOOD_ITEM.map((cat) => PopularFood(
                   //         cat.title,

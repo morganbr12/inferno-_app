@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:inferno/models/list.dart';
+import 'package:provider/provider.dart';
 
-import '../models/details.dart';
+import '../provider/product_provider.dart';
 
 class PopularFood extends StatelessWidget {
-  final String title;
-  final String imageUrl;
-  final double price;
-  final String description;
-  const PopularFood(this.title, this.imageUrl, this.price, this.description,
-      {Key? key})
-      : super(key: key);
+  // final String id;
+  // final String title;
+  // final String imageUrl;
+  // final double price;
+  // final String description;
+  const PopularFood({Key? key}) : super(key: key);
 
-  void toViewFoodPage(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed('/viewfood', arguments: {
-      'title': title,
-      'imageUrl': imageUrl,
-      'price': price,
-      'description': description,
-    });
-  }
+  // void toViewFullPage(BuildContext context) {
+  //    Navigator.of(context).pushNamed('/viewfood', arguments: products.id);
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final products = Provider.of<Items>(context, listen: false);
     return Container(
       height: 255.h,
       margin: const EdgeInsets.only(left: 10, right: 10),
@@ -39,7 +36,10 @@ class PopularFood extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: () => toViewFoodPage(context),
+                onTap: () => {
+                  Navigator.of(context)
+                      .pushNamed('/viewfood', arguments: products.id)
+                },
                 child: Stack(
                   children: [
                     Container(
@@ -55,7 +55,7 @@ class PopularFood extends StatelessWidget {
                           bottom: Radius.circular(20),
                         ),
                         child: Image.asset(
-                          imageUrl,
+                          products.imageUrl,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -63,12 +63,17 @@ class PopularFood extends StatelessWidget {
                     Positioned(
                       top: 10,
                       right: 10,
-                      child: InkWell(
-                        onTap: () {},
-                        child: Image.asset(
-                          'assets/images/icons/flat-color-icons_like.png',
-                          color: Colors.grey,
-                          scale: 0.8,
+                      child: Consumer<Items>(
+                        builder: (ctx, products, _) => InkWell(
+                          onTap: () {
+                            products.toggleFavoriteStatus();
+                          },
+                          child: Image.asset(
+                            'assets/images/icons/flat-color-icons_like.png',
+                            color:
+                                products.isFavorite ? Colors.red : Colors.grey,
+                            scale: 0.8,
+                          ),
                         ),
                       ),
                     ),
@@ -102,8 +107,8 @@ class PopularFood extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child:
-                      Text(title, style: Theme.of(context).textTheme.headline1),
+                  child: Text(products.title,
+                      style: Theme.of(context).textTheme.headline1),
                 ),
               ],
             ),
@@ -132,7 +137,7 @@ class PopularFood extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 17.0),
                   child: Text(
-                    '$title    .    ',
+                    products.title,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 12,
@@ -141,9 +146,9 @@ class PopularFood extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 17.0),
+                  padding: const EdgeInsets.only(top: 17.0, left: 20),
                   child: Text(
-                    'Ghc $price',
+                    'Ghc ${products.price}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 12,
