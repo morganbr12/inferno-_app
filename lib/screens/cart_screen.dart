@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-
-import '../Widget/cart.dart';
-
-
-
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
 
@@ -17,7 +12,7 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    final title = const Text('Track Order');
+    const title = Text('Track Order');
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -35,22 +30,18 @@ class _CartScreenState extends State<CartScreen> {
                   width: double.maxFinite,
                   margin: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(60),
-                    border: Border.all(color: Colors.red)
-                  ),
+                      borderRadius: BorderRadius.circular(60),
+                      border: Border.all(color: Colors.red)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(60),
                     child: const GoogleMap(
                       initialCameraPosition: CameraPosition(
-                          target: LatLng(
-                              5.668817,-0.1877119
-                    ),
+                        target: LatLng(5.668817, -0.1877119),
                         zoom: 15,
                       ),
                     ),
                   ),
                 ),
-
                 Positioned(
                   top: 340,
                   left: 35,
@@ -73,60 +64,54 @@ class _CartScreenState extends State<CartScreen> {
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(5),
-                            child: Image.asset('assets/images/ryder/ryder1.png'),
+                            child:
+                                Image.asset('assets/images/ryder/ryder1.png'),
                           ),
                         ),
-
                         Expanded(
                           flex: 2,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children:  [
-                               const  Padding(
+                            children: [
+                              const Padding(
                                 padding: EdgeInsets.only(top: 10, bottom: 8),
                                 child: Text(
                                   'Thomas Yeboah',
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15
-                                  ),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
                                 ),
                               ),
-
                               Text(
                                 'Your Ryder',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
-                                  color: Colors.grey.withOpacity(0.6)
-                                ),
+                                    color: Colors.grey.withOpacity(0.6)),
                               ),
                             ],
                           ),
                         ),
-
-
                         InkWell(
                           onTap: () {},
                           child: Container(
-                            height: 40.h,
-                            width: 40.w,
-                            margin: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: Colors.grey.withOpacity(0.5), width: 1)
-                            ),
-                            child: Image.asset('assets/images/icons/carbon_phone.png')
-                          ),
+                              height: 40.h,
+                              width: 40.w,
+                              margin: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      width: 1)),
+                              child: Image.asset(
+                                  'assets/images/icons/carbon_phone.png')),
                         )
-
                       ],
                     ),
                   ),
                 )
               ],
             ),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -144,13 +129,13 @@ class _CartScreenState extends State<CartScreen> {
                         child: Image.asset('assets/images/icons/clock.png'),
                       ),
                     ),
-
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
-                          child: Text('Delivery Time',
+                          child: Text(
+                            'Delivery Time',
                             style: TextStyle(
                               color: Theme.of(context).accentColor,
                               fontSize: 16,
@@ -158,10 +143,10 @@ class _CartScreenState extends State<CartScreen> {
                             ),
                           ),
                         ),
-
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0, top: 10),
-                          child: Text('25 Minutes',
+                          child: Text(
+                            '25 Minutes',
                             style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontSize: 15,
@@ -183,9 +168,7 @@ class _CartScreenState extends State<CartScreen> {
                       Container(
                         height: 10,
                         width: 3,
-                        decoration: const BoxDecoration(
-                            color: Colors.grey
-                        ),
+                        decoration: const BoxDecoration(color: Colors.grey),
                       ),
                       SizedBox(
                         height: 2.h,
@@ -193,9 +176,7 @@ class _CartScreenState extends State<CartScreen> {
                       Container(
                         height: 10,
                         width: 3,
-                        decoration: const BoxDecoration(
-                            color: Colors.grey
-                        ),
+                        decoration: const BoxDecoration(color: Colors.grey),
                       ),
                       SizedBox(
                         height: 2.h,
@@ -203,9 +184,7 @@ class _CartScreenState extends State<CartScreen> {
                       Container(
                         height: 10,
                         width: 3,
-                        decoration: const BoxDecoration(
-                            color: Colors.grey
-                        ),
+                        decoration: const BoxDecoration(color: Colors.grey),
                       ),
                       SizedBox(
                         height: 2.h,
@@ -213,9 +192,7 @@ class _CartScreenState extends State<CartScreen> {
                       Container(
                         height: 10,
                         width: 3,
-                        decoration: const BoxDecoration(
-                            color: Colors.grey
-                        ),
+                        decoration: const BoxDecoration(color: Colors.grey),
                       ),
                     ],
                   ),
@@ -237,13 +214,13 @@ class _CartScreenState extends State<CartScreen> {
                         child: Image.asset('assets/images/icons/home.png'),
                       ),
                     ),
-
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
-                          child: Text('Delivery Address',
+                          child: Text(
+                            'Delivery Address',
                             style: TextStyle(
                               color: Theme.of(context).accentColor,
                               fontSize: 16,
@@ -251,7 +228,6 @@ class _CartScreenState extends State<CartScreen> {
                             ),
                           ),
                         ),
-
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0, top: 10),
                           child: Text(
@@ -267,36 +243,31 @@ class _CartScreenState extends State<CartScreen> {
                     )
                   ],
                 ),
-
                 SizedBox(
                   height: 30.h,
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                        onPressed: () {},
+                      onPressed: () {},
                       style: ButtonStyle(
-                        padding: MaterialStateProperty.all<EdgeInsets>(
-                          EdgeInsets.symmetric(
-                            horizontal: 130.w,
-                          vertical: 20.h
-                        ),
-                        ),
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                          padding: MaterialStateProperty.all<EdgeInsets>(
+                            EdgeInsets.symmetric(
+                                horizontal: 130.w, vertical: 20.h),
+                          ),
+                          backgroundColor: MaterialStateProperty.all<Color>(
                             Theme.of(context).primaryColor,
-                        ),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
-                          )
-                        )
+                          ))),
+                      child: Text(
+                        'Detail Order',
+                        style: Theme.of(context).textTheme.headline2,
                       ),
-                        child: Text(
-                            'Detail Order',
-                          style: Theme.of(context).textTheme.headline2,
-                        ),
                     ),
                   ],
                 )

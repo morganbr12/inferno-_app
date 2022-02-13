@@ -27,7 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
     Navigator.of(ctx).pushNamedAndRemoveUntil('/login', (route) => false);
   }
 
-  var _isLoading = false;
+  bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -213,6 +213,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           onPressed: () {
                             signUp(
                                 emailController.text, passwordController.text);
+                            _isLoading == true;
                           },
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
@@ -301,6 +302,7 @@ class _SignUpPageState extends State<SignUpPage> {
         .doc(user.uid)
         .set(authModel.toMap());
     _isLoading = true;
+
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/homepage', (route) => false);
   }

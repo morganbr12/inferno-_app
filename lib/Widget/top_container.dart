@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
-
 class HomePageTopContainer extends StatefulWidget {
   const HomePageTopContainer({Key? key}) : super(key: key);
 
@@ -11,9 +8,7 @@ class HomePageTopContainer extends StatefulWidget {
 }
 
 class _HomePageTopContainerState extends State<HomePageTopContainer> {
-  final List<String> imageList = [
-    'assets/images/carouselimg.png'
-  ];
+  final List<String> imageList = ['assets/images/carouselimg.png'];
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +17,7 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
         Container(
           margin: const EdgeInsets.only(left: 10, right: 10),
           height: MediaQuery.of(context).size.width * 0.35,
-          width: MediaQuery.of(context).size.width * 0.9,
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             border: Border.all(color: Theme.of(context).primaryColor),
@@ -39,9 +34,7 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
               height: 8,
               width: 8,
               decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.grey
-              ),
+                  shape: BoxShape.circle, color: Colors.grey),
             ),
             const SizedBox(
               width: 4,
@@ -50,9 +43,7 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
               height: 8,
               width: 8,
               decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey
-              ),
+                  shape: BoxShape.circle, color: Colors.grey),
             ),
             const SizedBox(
               width: 4,
@@ -61,9 +52,7 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
               height: 8,
               width: 8,
               decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey
-              ),
+                  shape: BoxShape.circle, color: Colors.grey),
             ),
             const SizedBox(
               width: 4,
@@ -72,9 +61,7 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
               height: 8,
               width: 8,
               decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey
-              ),
+                  shape: BoxShape.circle, color: Colors.grey),
             ),
             const SizedBox(
               width: 4,
@@ -83,9 +70,7 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
               height: 8,
               width: 8,
               decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey
-              ),
+                  shape: BoxShape.circle, color: Colors.grey),
             ),
             const SizedBox(
               width: 4,
@@ -94,9 +79,7 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
               height: 8,
               width: 8,
               decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey
-              ),
+                  shape: BoxShape.circle, color: Colors.grey),
             ),
           ],
         )

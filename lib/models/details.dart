@@ -1,13 +1,12 @@
 import '../models/list.dart';
 
-const FOOD_ITEM =  [
+final List<Items> FOOD_ITEM = [
   Items(
       id: 't1',
       title: 'Pizza',
       imageUrl: 'assets/images/foodImages/pizza.png',
       price: 22,
-      description: ''
-  ),
+      description: ''),
   Items(
       id: 't1',
       title: 'Burger',
@@ -17,37 +16,32 @@ const FOOD_ITEM =  [
           'sandwiched between two fresh mega buns, surrounded '
           'by an army of veg and encapsulated in 5 cheese slices. '
           'This is accompanied by a platoon of fries '
-          '[yam, potato, cassava, or cocoyam].'
-  ),
+          '[yam, potato, cassava, or cocoyam].'),
   Items(
       id: 't1',
       title: 'Burger',
       imageUrl: 'assets/images/foodImages/kakratua.png',
       price: 22,
-      description: ''
-  ),
+      description: ''),
   Items(
       id: 't1',
       title: 'Burger',
       imageUrl: 'assets/images/foodImages/kakratua.png',
       price: 22,
-      description: ''
-  ),
+      description: ''),
   Items(
       id: 't1',
       title: 'Burger',
       imageUrl: 'assets/images/foodImages/kakratua.png',
       price: 22,
-      description: ''
-  )
+      description: '')
 ];
-
 
 const Categories = [
   category(
-      id: 't1',
-      title: 'Appetizers',
-      imageUrl: 'assets/images/categories_icon/appetizer.jpeg',
+    id: 't1',
+    title: 'Appetizers',
+    imageUrl: 'assets/images/categories_icon/appetizer.jpeg',
   ),
   category(
     id: 't1',

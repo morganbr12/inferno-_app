@@ -49,7 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
           if (value!.isEmpty) {
             return 'Enter correct email';
           }
-          if (!RegExp(r'^[a-zA-Z0+_.-]+@[a-zA-Z0.-]+.[a-z]').hasMatch(value)) {
+          if (!RegExp(r'^[a-zA-Z0+_.-1-9]+@[a-zA-Z0.-]+.[a-z]')
+              .hasMatch(value)) {
             return "Enter a valid email";
           } else {
             return null;
@@ -247,26 +248,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
 // login in function
   Future<void> signIn(String email, String password) async {
-    //   if (_formKey.currentState!.validate()) {
-    //     await _auth
-    //         .signInWithEmailAndPassword(email: email, password: password)
-    //         .then((value) {
-    //       Navigator.of(context)
-    //           .pushNamedAndRemoveUntil('/homepage', (route) => false);
-    //       Fluttertoast.showToast(msg: "Login sucessful");
-    //     }).catchError((handleError) {});
-    //   }
-    try {
-      if (_formKey.currentState!.validate()) {
-        await _auth
-            .signInWithEmailAndPassword(email: email, password: password)
-            .then((value) => {
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil('/homepage', (route) => false)
-                });
-      }
-    } on FirebaseAuthException catch (error) {
-      error.message;
+    if (_formKey.currentState!.validate()) {
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((value) {
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('/homepage', (route) => false);
+        Fluttertoast.showToast(msg: "Login sucessful");
+      }).catchError((handleError) {});
     }
   }
 }

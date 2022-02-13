@@ -31,7 +31,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(InfernoApp());
+  runApp(const InfernoApp());
 }
 
 class InfernoApp extends StatelessWidget {
@@ -99,7 +99,7 @@ class InfernoApp extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                   elevation: 0,
                   iconTheme: const IconThemeData(color: Colors.black))),
-          initialRoute: '/welcome',
+          home: InfernoHomePage(),
           routes: {
             '/welcome': (ctx) => const WelcomeScreen(),
             '/login': (ctx) => const LoginScreen(),
