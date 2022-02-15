@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:inferno/auth/auth_controllers/controllers.dart';
+import 'package:inferno/provider/cart_provider.dart';
+import 'package:inferno/provider/liked_item.dart';
 import 'package:inferno/provider/product_provider.dart';
 import 'package:provider/provider.dart';
 // import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
@@ -55,55 +57,62 @@ class InfernoApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (ctx) => Products(),
           ),
+          ChangeNotifierProvider(
+            create: (ctx) => Cart(),
+          ),
+          ChangeNotifierProvider(
+            create: (ctx) => Like(),
+          ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-              primaryColor: const Color.fromRGBO(203, 160, 68, 1),
-              accentColor: Colors.white,
-              splashColor: Colors.grey.shade300,
-              backgroundColor: const Color.fromRGBO(22, 22, 34, 1),
-              fontFamily: 'Poppins',
-              textTheme: ThemeData.light().textTheme.copyWith(
-                    bodyText1: const TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 14,
-                        color: Colors.white),
-                    headline5: const TextStyle(
+            primaryColor: const Color.fromRGBO(203, 160, 68, 1),
+            accentColor: Colors.white,
+            splashColor: Colors.grey.shade300,
+            backgroundColor: const Color.fromRGBO(22, 22, 34, 1),
+            fontFamily: 'Poppins',
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  bodyText1: const TextStyle(
+                      fontFamily: 'Poppins', fontSize: 14, color: Colors.white),
+                  headline5: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  headline4: const TextStyle(
+                      fontFamily: 'Poppins',
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    headline4: const TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
-                    headline3: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                  headline3: const TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    // color: Colors.white
+                  ),
+                  headline2: const TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      // color: Colors.white
-                    ),
-                    headline2: const TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white),
-                    headline1: const TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white),
-                  ),
-              appBarTheme: AppBarTheme.of(context).copyWith(
-                  titleTextStyle: const TextStyle(
-                      color: Colors.white,
+                      color: Colors.white),
+                  headline1: const TextStyle(
                       fontFamily: 'Poppins',
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600),
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  iconTheme: const IconThemeData(color: Colors.black))),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),
+                ),
+            appBarTheme: AppBarTheme.of(context).copyWith(
+              titleTextStyle: const TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              iconTheme: const IconThemeData(color: Colors.black),
+            ),
+          ),
+          title: "Inferno App",
           home: InfernoHomePage(),
           routes: {
             '/welcome': (ctx) => const WelcomeScreen(),

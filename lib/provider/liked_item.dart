@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class CartItem {
+class LikedItem {
   final String id;
   final String title;
   final String shortTitle;
@@ -8,7 +8,7 @@ class CartItem {
   final double price;
   final double quantity;
 
-  CartItem({
+  LikedItem({
     required this.id,
     required this.title,
     required this.shortTitle,
@@ -18,45 +18,31 @@ class CartItem {
   });
 }
 
-class Cart with ChangeNotifier {
-  final Map<String, CartItem> _items = {};
+class Like with ChangeNotifier {
+  final Map<String, LikedItem> _liked = {};
 
-  Map<String, CartItem> get items {
-    return {..._items};
+  Map<String, LikedItem> get liked {
+    return {..._liked};
   }
 
-  int get itemCount {
-    return _items.length;
+  int get likedCount {
+    return _liked.length;
   }
 
-  // double get totalOrder {
-  //   var order = 0.0;
-  //   _items.forEach((key, cartOrder) {
-  //     order = (cartOrder.pr)
-  //   });
-  //   return order;
-  // }
+  // adding items to the liked page
 
-  double get totalAmount {
-    var total = 0.0;
-    _items.forEach((key, cartItem) {
-      total += (cartItem.price * cartItem.quantity);
-    });
-    return total;
-  }
-
-  void addItem(
+  void addLikedItem(
     String productId,
     double price,
     String title,
     String imageUrl,
     String shortTitle,
   ) {
-    if (_items.containsKey(productId)) {
+    if (_liked.containsKey(productId)) {
       // update the exiting quantity
-      _items.update(
+      _liked.update(
         productId,
-        (existingCartItem) => CartItem(
+        (existingCartItem) => LikedItem(
           id: DateTime.now().toString(),
           title: title,
           shortTitle: shortTitle,
@@ -67,9 +53,9 @@ class Cart with ChangeNotifier {
       );
     } else {
       // adding new item into the cart
-      _items.putIfAbsent(
+      _liked.putIfAbsent(
         productId,
-        () => CartItem(
+        () => LikedItem(
           id: DateTime.now().toString(),
           title: title,
           shortTitle: shortTitle,
@@ -80,11 +66,6 @@ class Cart with ChangeNotifier {
       );
     }
 
-    notifyListeners();
-  }
-
-  void removeItem(String productId) {
-    _items.remove(productId);
     notifyListeners();
   }
 }

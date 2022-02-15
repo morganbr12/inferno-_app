@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inferno/models/list.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/product_provider.dart';
+import '../provider/cart_provider.dart';
+import '../provider/liked_item.dart';
 
 class PopularFood extends StatelessWidget {
   // final String id;
@@ -20,6 +23,9 @@ class PopularFood extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<Items>(context, listen: false);
+    final addToCart = Provider.of<Cart>(context, listen: false);
+    final addToLiked = Provider.of<Like>(context, listen: false);
+
     return Container(
       height: 255.h,
       margin: const EdgeInsets.only(left: 10, right: 10),
@@ -37,8 +43,10 @@ class PopularFood extends StatelessWidget {
               ),
               child: InkWell(
                 onTap: () => {
-                  Navigator.of(context)
-                      .pushNamed('/viewfood', arguments: products.id)
+                  Navigator.of(context).pushNamed(
+                    '/viewfood',
+                    arguments: products.id,
+                  )
                 },
                 child: Stack(
                   children: [
@@ -60,21 +68,69 @@ class PopularFood extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 10,
-                      right: 10,
-                      child: Consumer<Items>(
-                        builder: (ctx, products, _) => InkWell(
-                          onTap: () {
-                            products.toggleFavoriteStatus();
-                          },
-                          child: Image.asset(
-                            'assets/images/icons/flat-color-icons_like.png',
-                            color:
-                                products.isFavorite ? Colors.red : Colors.grey,
-                            scale: 0.8,
+                    Container(
+                      width: double.maxFinite,
+                      height: 175.h,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            height: 42.h,
+                            width: 92.w,
+                            decoration: const BoxDecoration(
+                              color: Colors.black87,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15),
+                              ),
+                            ),
+                            child: Row(children: [
+                              Consumer<Items>(
+                                builder: (ctx, products, _) => Padding(
+                                  padding: const EdgeInsets.only(
+                                      bottom: 3.0, left: 15),
+                                  child: InkWell(
+                                    onTap: () {
+                                      products.toggleFavoriteStatus();
+                                      addToLiked.addLikedItem(
+                                        products.id,
+                                        products.price,
+                                        products.title,
+                                        products.imageUrl,
+                                        products.shortTitle,
+                                      );
+                                    },
+                                    borderRadius: BorderRadius.circular(50),
+                                    radius: 50.r,
+                                    child: Image.asset(
+                                      'assets/images/icons/flat-color-icons_like.png',
+                                      color: products.isFavorite
+                                          ? Colors.red
+                                          : Colors.grey,
+                                      scale: 0.8,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  addToCart.addItem(
+                                    products.id,
+                                    products.price,
+                                    products.title,
+                                    products.imageUrl,
+                                    products.shortTitle,
+                                  );
+                                },
+                                icon: const Icon(
+                                  Feather.shopping_cart,
+                                  color: Colors.grey,
+                                ),
+                              )
+                            ]),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                     Positioned(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inferno/provider/product_provider.dart';
 import 'package:provider/provider.dart';
+import '../provider/cart_provider.dart';
 
 class ViewFood extends StatelessWidget {
   const ViewFood({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class ViewFood extends StatelessWidget {
 
     final loadedProduct =
         Provider.of<Products>(context, listen: false).findById(foodDetailsId);
+    final addToCart = Provider.of<Cart>(context, listen: false);
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(),
@@ -109,8 +111,8 @@ class ViewFood extends StatelessWidget {
                             const SizedBox(
                               height: 5,
                             ),
-                            const Text(
-                              'Cheesy Mozarella',
+                            Text(
+                              loadedProduct.shortTitle,
                               style:
                                   TextStyle(fontSize: 11, color: Colors.grey),
                             ),
@@ -217,7 +219,15 @@ class ViewFood extends StatelessWidget {
                                   RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ))),
-                      onPressed: () {},
+                      onPressed: () {
+                        addToCart.addItem(
+                          loadedProduct.id,
+                          loadedProduct.price,
+                          loadedProduct.title,
+                          loadedProduct.imageUrl,
+                          loadedProduct.shortTitle,
+                        );
+                      },
                       child: Container(
                         width: double.maxFinite,
                         padding: const EdgeInsets.only(top: 20, bottom: 20),

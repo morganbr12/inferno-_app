@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:inferno/screens/love.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:provider/provider.dart';
 
 import '../Widget/home.dart';
 import '../screens/nofication.dart';
 import '../screens/cart_screen.dart';
 import '../models/notificationList.dart';
+import '../Widget/badge.dart';
+import '../provider/cart_provider.dart';
 
 class InfernoHomePage extends StatefulWidget {
   const InfernoHomePage({Key? key}) : super(key: key);
@@ -101,22 +104,19 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
           ),
         ),
         actions: [
-          Stack(
-            textDirection: TextDirection.ltr,
-            // alignment: AlignmentDirectional.lerp(AlignmentGeometry(), AlignmentGeometry(), 2.0),
-            children: [
-              IconButton(
-                onPressed: () => toCartScreen(context),
-                icon: Icon(
+          Consumer<Cart>(
+            builder: (_, cart, ch) => Badge(
+              child: IconButton(
+                icon: const Icon(
                   Icons.shopping_cart,
-                  color: Theme.of(context).accentColor,
+                  color: Colors.white,
                 ),
+                onPressed: () => toCartScreen(context),
               ),
-              Text('0'),
-            ],
+              color: Theme.of(context).primaryColor,
+              value: cart.itemCount.toString(),
+            ),
           ),
-          const Padding(
-              padding: EdgeInsets.only(top: 20, right: 5), child: Text("0.00")),
         ],
       ),
       body: SafeArea(

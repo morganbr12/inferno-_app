@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Items with ChangeNotifier {
   final String id;
   final String title;
+  final String shortTitle;
   final String imageUrl;
   final double price;
   final String description;
@@ -11,6 +12,7 @@ class Items with ChangeNotifier {
   Items({
     required this.id,
     required this.title,
+    required this.shortTitle,
     required this.imageUrl,
     required this.price,
     required this.description,

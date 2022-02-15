@@ -7,6 +7,7 @@ class Products with ChangeNotifier {
     Items(
       id: 'a',
       title: 'Pizza',
+      shortTitle: 'Cheezy Mozarella',
       imageUrl: 'assets/images/foodImages/pizza.png',
       price: 22,
       description: ' ultimate in burgers. 4 beef patties, '
@@ -18,6 +19,7 @@ class Products with ChangeNotifier {
     Items(
       id: 'b',
       title: 'Burger',
+      shortTitle: 'Cheezy Mozarella',
       imageUrl: 'assets/images/foodImages/burger.png',
       price: 50,
       description: 'The ultimate in burgers. 4 beef patties, '
@@ -29,6 +31,7 @@ class Products with ChangeNotifier {
     Items(
       id: 'c',
       title: 'Burger',
+      shortTitle: 'Cheezy Mozarella',
       imageUrl: 'assets/images/foodImages/kakratua.png',
       price: 22,
       description: ' ultimate in burgers. 4 beef patties, '
@@ -40,6 +43,7 @@ class Products with ChangeNotifier {
     Items(
       id: 'd',
       title: 'Burger',
+      shortTitle: 'Cheezy Mozarella',
       imageUrl: 'assets/images/foodImages/kakratua.png',
       price: 50,
       description: ' ultimate in burgers. 4 beef patties, '
@@ -51,6 +55,7 @@ class Products with ChangeNotifier {
     Items(
       id: 'e',
       title: 'Burger',
+      shortTitle: 'Cheezy Mozarella',
       imageUrl: 'assets/images/foodImages/kakratua.png',
       price: 70,
       description: ' ultimate in burgers. 4 beef patties, '
