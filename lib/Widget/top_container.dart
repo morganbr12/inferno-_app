@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePageTopContainer extends StatefulWidget {
   const HomePageTopContainer({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
       children: [
         Container(
           margin: const EdgeInsets.only(left: 10, right: 10),
-          height: MediaQuery.of(context).size.width * 0.35,
+          height: 150.h,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
@@ -24,15 +25,15 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
           ),
           // child: ,
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: 10.h,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 8,
-              width: 8,
+              height: 8.h,
+              width: 8.w,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.grey),
             ),
@@ -40,8 +41,8 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
               width: 4,
             ),
             Container(
-              height: 8,
-              width: 8,
+              height: 8.h,
+              width: 8.w,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.grey),
             ),
@@ -49,8 +50,8 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
               width: 4,
             ),
             Container(
-              height: 8,
-              width: 8,
+              height: 8.h,
+              width: 8.w,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.grey),
             ),
@@ -58,8 +59,8 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
               width: 4,
             ),
             Container(
-              height: 8,
-              width: 8,
+              height: 8.h,
+              width: 8.w,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.grey),
             ),
@@ -67,17 +68,17 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
               width: 4,
             ),
             Container(
-              height: 8,
-              width: 8,
+              height: 8.h,
+              width: 8.w,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.grey),
             ),
-            const SizedBox(
-              width: 4,
+            SizedBox(
+              width: 4.w,
             ),
             Container(
-              height: 8,
-              width: 8,
+              height: 8.h,
+              width: 8.w,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.grey),
             ),

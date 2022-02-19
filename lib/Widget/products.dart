@@ -5,6 +5,8 @@ import '../Widget/popular_food.dart';
 import '../provider/product_provider.dart';
 
 class FoodProducts extends StatelessWidget {
+  const FoodProducts({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final productDetails = Provider.of<Products>(context);
@@ -13,7 +15,7 @@ class FoodProducts extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.6,
+        height: MediaQuery.of(context).size.height,
         child: ListView.builder(
             itemCount: prod.length,
             itemBuilder: (ctx, i) => ChangeNotifierProvider.value(

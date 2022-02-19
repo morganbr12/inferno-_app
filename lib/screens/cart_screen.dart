@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../Widget/back_arrow.dart';
+
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
 
@@ -19,6 +21,7 @@ class _CartScreenState extends State<CartScreen> {
           toolbarHeight: 43.h,
           title: title,
           centerTitle: true,
+          leading: leadingIcon(context),
         ),
         backgroundColor: Theme.of(context).backgroundColor,
         body: Column(

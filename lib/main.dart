@@ -2,11 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:inferno/auth/auth_controllers/controllers.dart';
-import 'package:inferno/provider/cart_provider.dart';
-import 'package:inferno/provider/liked_item.dart';
-import 'package:inferno/provider/product_provider.dart';
 import 'package:provider/provider.dart';
+
+// import 'package:inferno/Widget/orders.dart';
+import './auth/auth_controllers/controllers.dart';
+import './provider/cart_provider.dart';
+import './provider/liked_item.dart';
+import './provider/product_provider.dart';
+
 // import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'firebase_options.dart';
 
@@ -27,6 +30,12 @@ import './screens/full_view_notification.dart';
 // import './models/notificationList.dart';
 import './screens/About_screen.dart';
 import './screens/payment_screent.dart';
+import 'provider/ordered_item.dart';
+import './screens/ordered_screen.dart';
+// import './screens/payment_screen.dart';
+import './screens/order_placed_screen.dart';
+import 'screens/payment_page_screen.dart';
+import './screens/history.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,6 +71,9 @@ class InfernoApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (ctx) => Like(),
+          ),
+          ChangeNotifierProvider(
+            create: (ctx) => Ordered(),
           ),
         ],
         child: MaterialApp(
@@ -113,7 +125,7 @@ class InfernoApp extends StatelessWidget {
             ),
           ),
           title: "Inferno App",
-          home: InfernoHomePage(),
+          home: const InfernoHomePage(),
           routes: {
             '/welcome': (ctx) => const WelcomeScreen(),
             '/login': (ctx) => const LoginScreen(),
@@ -129,7 +141,12 @@ class InfernoApp extends StatelessWidget {
             '/viewfullnotification': (ctx) => const FullViewNotification(),
             '/about': (ctx) => const AboutScreen(),
             '/payment': (ctx) => const PaymentScreen(),
-            '/tracking': (ctx) => const CartScreen()
+            '/tracking': (ctx) => const CartScreen(),
+            '/orders': (ctx) => const OrederedScreenPage(),
+            '/payments': (ctx) => const PaymentScreen(),
+            '/orderedplace': (ctx) => const NotifyingClientOrderHasBeenPlaced(),
+            '/paym': (ctx) => const PaymentPage(),
+            '/history': (ctx) => const HistoryScreen()
           },
         ),
       ),
@@ -137,20 +154,3 @@ class InfernoApp extends StatelessWidget {
     );
   }
 }
-
-// class AuthenticationWrapper extends StatelessWidget {
-//   const AuthenticationWrapper({Key? key}) : super(key: key);
-
-  
-//   @override
-//   Widget build(BuildContext context) {
-//     final firebaseUser = context.watch<User>();
-//     if (firebaseUser != null) {
-//       Navigator.of(context).pushNamedAndRemoveUntil("/homepage", (route) => false);
-//     } else {
-//       Navigator.of(context).pushNamedAndRemoveUntil("/login", (route) => false);
-//     }
-//     ;
-//   }
-    
-// }

@@ -22,7 +22,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void toPaymentScreen(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed('/payment');
+    Navigator.of(ctx).pushNamed('/paym');
+  }
+
+  void toHistoryScreen(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed('/history');
   }
 
   User? user = FirebaseAuth.instance.currentUser;
@@ -88,8 +92,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           Text(
                             "${loggedInUser.phoneNumber}",
-                            style:
-                                TextStyle(letterSpacing: 1, color: Colors.grey),
+                            style: const TextStyle(
+                                letterSpacing: 1, color: Colors.grey),
                           ),
                         ],
                       ),
@@ -310,6 +314,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  GestureDetector(
+                    onTap: () => toHistoryScreen(context),
+                    child: Text(
+                      'History',
+                      style: TextStyle(
+                          color: Theme.of(context).accentColor,
+                          fontSize: 18,
+                          letterSpacing: 2,
+                          fontFamily: 'Poppins'),
+                    ),
                   ),
                   const Padding(
                     padding: const EdgeInsets.only(top: 20.0),

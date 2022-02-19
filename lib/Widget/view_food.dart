@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:inferno/provider/product_provider.dart';
 import 'package:provider/provider.dart';
+
+import '../provider/product_provider.dart';
 import '../provider/cart_provider.dart';
+import 'back_arrow.dart';
 
 class ViewFood extends StatelessWidget {
   const ViewFood({Key? key}) : super(key: key);
@@ -16,7 +18,9 @@ class ViewFood extends StatelessWidget {
     final addToCart = Provider.of<Cart>(context, listen: false);
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: leadingIcon(context),
+      ),
       body: Stack(
         children: [
           Container(
@@ -121,7 +125,7 @@ class ViewFood extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 2.0),
                           child: Text(
-                            '{¢}',
+                            'Ghc ${loadedProduct.price}',
                             style: TextStyle(
                                 fontSize: 30,
                                 color: Theme.of(context).primaryColor),

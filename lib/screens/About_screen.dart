@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:inferno/Widget/back_arrow.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({Key? key}) : super(key: key);
@@ -8,7 +8,9 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: leadingIcon(context),
+      ),
     );
   }
 }

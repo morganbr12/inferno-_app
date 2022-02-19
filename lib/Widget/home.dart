@@ -15,68 +15,69 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: ListView(
-          children: [
-            const HomePageTopContainer(),
-            const SizedBox(
-              height: 7,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8.0, left: 10),
-              child: Text(
-                'Categories',
-                style: Theme.of(context).textTheme.headline2,
-              ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.06,
-              width: 110.w,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: Categories.map((cat) => ChooseFoodItem(
-                      cat.title,
-                      cat.imageUrl,
-                    )).toList(),
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          SizedBox(
+            height: height,
+            width: width,
+            child: ListView(
               children: [
+                const HomePageTopContainer(),
+                const SizedBox(
+                  height: 7,
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: InkWell(
-                    onTap: () {},
-                    child: Card(
-                      color: Colors.transparent,
-                      elevation: 3,
-                      child: Text('All',
-                          style: Theme.of(context).textTheme.headline2),
-                    ),
+                  padding: const EdgeInsets.only(bottom: 8.0, left: 10),
+                  child: Text(
+                    'Categories',
+                    style: Theme.of(context).textTheme.headline2,
                   ),
                 ),
+                SizedBox(
+                  height: 50.h,
+                  width: 110.w,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: Categories.map((cat) => ChooseFoodItem(
+                          cat.title,
+                          cat.imageUrl,
+                        )).toList(),
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Card(
+                          color: Colors.transparent,
+                          elevation: 3,
+                          child: Text(
+                            'All',
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                FoodProducts(),
               ],
             ),
-            FoodProducts(),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
-
-
-
-// children: FOOD_ITEM.map((cat) => PopularFood(
-                  //         cat.title,
-                  //       cat.imageUrl,
-                  //   cat.price,
-                  //   cat.description
-                  //     )).toList(),

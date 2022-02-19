@@ -4,16 +4,16 @@ import 'package:provider/provider.dart';
 
 import '../provider/cart_provider.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   final String id;
   final String title;
   final String productId;
   final String shortTitle;
   final double price;
   final String imageUrl;
-  final double quantity;
+  double quantity;
 
-  const CartPage(
+  CartPage(
       {required this.id,
       required this.title,
       required this.productId,
@@ -25,7 +25,13 @@ class CartPage extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  @override
   Widget build(BuildContext context) {
+    // final qty = Provider.of<Cart>(context, listen: false);
     return InkWell(
       onTap: () {},
       child: Container(
@@ -43,7 +49,7 @@ class CartPage extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
-                  imageUrl,
+                  widget.imageUrl,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -56,7 +62,7 @@ class CartPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
-                        title,
+                        widget.title,
                         style: TextStyle(
                             color: Theme.of(context).accentColor,
                             fontSize: 12,
@@ -66,7 +72,7 @@ class CartPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Text(
-                        shortTitle,
+                        widget.shortTitle,
                         style: TextStyle(
                             color: Theme.of(context).accentColor,
                             fontSize: 12,
@@ -76,7 +82,7 @@ class CartPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
-                        '\Ghc ${price * quantity}',
+                        '\Ghc ${widget.price * widget.quantity}',
                         style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontSize: 16),
@@ -89,7 +95,7 @@ class CartPage extends StatelessWidget {
                 IconButton(
                   onPressed: () {
                     Provider.of<Cart>(context, listen: false)
-                        .removeItem(productId);
+                        .removeItem(widget.productId);
                   },
                   icon: Icon(
                     Icons.delete,
@@ -103,7 +109,15 @@ class CartPage extends StatelessWidget {
                   child: Row(
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            if (widget.quantity == 1) {
+                              return;
+                            } else {
+                              widget.quantity -= 1;
+                            }
+                          });
+                        },
                         icon: Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
                           child: Icon(
@@ -113,9 +127,13 @@ class CartPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Text('$quantity'),
+                      Text('${widget.quantity}'),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            widget.quantity += 1;
+                          });
+                        },
                         icon: Padding(
                           padding: const EdgeInsets.only(bottom: 0.0),
                           child: Icon(
