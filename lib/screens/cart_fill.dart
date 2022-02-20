@@ -95,7 +95,7 @@ class CartFill extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'Ghc ${cart.totalAmount}',
+                                  'Ghc ${cart.totalAmount.toStringAsFixed(2)}',
                                   style: TextStyle(
                                     color: Theme.of(context)
                                         .primaryColor
