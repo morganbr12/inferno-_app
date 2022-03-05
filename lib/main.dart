@@ -1,3 +1,5 @@
+// @dart=2.9
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +15,7 @@ import './provider/product_provider.dart';
 // import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'firebase_options.dart';
 
-import './screens/cart_screen.dart';
+import 'screens/track_order_screen.dart';
 import './screens/cart_fill.dart';
 import './screens/welocme_screen.dart';
 import 'auth/auth_login_screen.dart';
@@ -36,18 +38,20 @@ import './screens/ordered_screen.dart';
 import './screens/order_placed_screen.dart';
 import 'screens/payment_page_screen.dart';
 import './screens/history.dart';
+import './screens/enter_delivery_address_screen.dart';
+import './screens/on_arrival_message.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+      // options: DefaultFirebaseOptions.currentPlatform,
+      );
 
   runApp(const InfernoApp());
 }
 
 class InfernoApp extends StatelessWidget {
-  const InfernoApp({Key? key}) : super(key: key);
+  const InfernoApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +150,9 @@ class InfernoApp extends StatelessWidget {
             '/payments': (ctx) => const PaymentScreen(),
             '/orderedplace': (ctx) => const NotifyingClientOrderHasBeenPlaced(),
             '/paym': (ctx) => const PaymentPage(),
-            '/history': (ctx) => const HistoryScreen()
+            '/history': (ctx) => const HistoryScreen(),
+            '/deliveryaddress': (ctx) => const DeliveryAddressSelector(),
+            '/onarrivalMessage': (ctx) => const OnArrivalMessage(),
           },
         ),
       ),

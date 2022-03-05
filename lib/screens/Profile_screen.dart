@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     FirebaseFirestore.instance
         .collection('users')
-        .doc(user!.uid)
+        .doc(user?.uid)
         .get()
         .then((value) {
       loggedInUser = Auth.fromMap(value.data());
@@ -53,406 +53,422 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         leading: leadingIcon(context),
       ),
-      body: SafeArea(
-        child: Container(
-          margin: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+      body: loggedInUser.fullName == null || loggedInUser.phoneNumber == null
+          ? Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 77.h,
-                    width: 77.w,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.grey),
-                    child: const Icon(
-                      Icons.person,
-                      size: 40,
-                    ),
+                  CircularProgressIndicator(
+                    color: Theme.of(context).primaryColor,
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "${loggedInUser.fullName}",
-                            style: TextStyle(
-                                fontFamily: 'Poppin',
-                                fontSize: 20,
-                                color: Theme.of(context).accentColor,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 1),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "${loggedInUser.phoneNumber}",
-                            style: const TextStyle(
-                                letterSpacing: 1, color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => toProfileSettings(context),
-                    child: Container(
-                      height: 29,
-                      width: 29,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey.withOpacity(0.2)),
-                      child: const Icon(Icons.arrow_forward_ios_rounded),
-                    ),
-                  )
                 ],
               ),
-              SizedBox(
-                height: 50.h,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'PREFERENCES',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        color: Colors.grey),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  Container(
-                    width: double.maxFinite,
-                    height: 55.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey.withOpacity(0.2),
-                    ),
-                    child: Row(
+            )
+          : SafeArea(
+              child: Container(
+                margin: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 12.0),
-                          child: Container(
-                            height: 36.h,
-                            width: 36.w,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.grey),
-                            child: Image.asset(
-                              'assets/images/icons/language.png',
-                              scale: 0.8,
-                            ),
+                        Container(
+                          height: 77.h,
+                          width: 77.w,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.grey),
+                          child: const Icon(
+                            Icons.person,
+                            size: 40,
                           ),
                         ),
                         Expanded(
                           flex: 2,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 15.0),
-                            child: Text(
-                              'Language',
-                              style: TextStyle(
-                                  color: Theme.of(context).accentColor,
-                                  // fontWeight: FontWeight.bold,
-                                  fontSize: 18),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${loggedInUser.fullName}",
+                                  style: TextStyle(
+                                      fontFamily: 'Poppin',
+                                      fontSize: 20,
+                                      color: Theme.of(context).accentColor,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 1),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "${loggedInUser.phoneNumber}",
+                                  style: const TextStyle(
+                                      letterSpacing: 1, color: Colors.grey),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                        InkWell(
-                          onTap: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 15.0),
-                            child: Row(
-                              children: const [
-                                Padding(
-                                  padding: EdgeInsets.only(right: 5.0),
-                                  child: Text(
-                                    'English',
-                                    style: TextStyle(color: Colors.grey),
+                        GestureDetector(
+                          onTap: () => toProfileSettings(context),
+                          child: Container(
+                            height: 29,
+                            width: 29,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.grey.withOpacity(0.2)),
+                            child: const Icon(Icons.arrow_forward_ios_rounded),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 50.h,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'PREFERENCES',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                              color: Colors.grey),
+                        ),
+                        SizedBox(
+                          height: 15.h,
+                        ),
+                        Container(
+                          width: double.maxFinite,
+                          height: 55.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.grey.withOpacity(0.2),
+                          ),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 12.0),
+                                child: Container(
+                                  height: 36.h,
+                                  width: 36.w,
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.grey),
+                                  child: Image.asset(
+                                    'assets/images/icons/language.png',
+                                    scale: 0.8,
                                   ),
                                 ),
-                                Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  size: 17,
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15.0),
+                                  child: Text(
+                                    'Language',
+                                    style: TextStyle(
+                                        color: Theme.of(context).accentColor,
+                                        // fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {},
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 15.0),
+                                  child: Row(
+                                    children: const [
+                                      Padding(
+                                        padding: EdgeInsets.only(right: 5.0),
+                                        child: Text(
+                                          'English',
+                                          style: TextStyle(color: Colors.grey),
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.arrow_forward_ios_rounded,
+                                        size: 17,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15.h,
+                        ),
+                        Container(
+                          width: double.maxFinite,
+                          height: 55.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.grey.withOpacity(0.20),
+                          ),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 12.0),
+                                child: Container(
+                                  height: 36.h,
+                                  width: 36.w,
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.grey),
+                                  child: Image.asset(
+                                    'assets/images/icons/Vector.png',
+                                    scale: 0.8,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15.0),
+                                  child: Text(
+                                    'Dark Mode',
+                                    style: TextStyle(
+                                        color: Theme.of(context).accentColor,
+                                        // fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                'on',
+                                style: TextStyle(
+                                    color: Theme.of(context).accentColor),
+                              ),
+                              Switch(
+                                activeColor: Theme.of(context).primaryColor,
+                                value: true,
+                                onChanged: (value) {},
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15.h,
+                        ),
+                        Container(
+                          width: double.maxFinite,
+                          height: 55.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.grey.withOpacity(0.20),
+                          ),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 12.0),
+                                child: Container(
+                                  height: 36.h,
+                                  width: 36.w,
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.red),
+                                  child: Image.asset(
+                                    'assets/images/icons/flat-color-icons_like.png',
+                                    scale: 0.8,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15.0),
+                                  child: Text(
+                                    'Notifications',
+                                    style: TextStyle(
+                                        color: Theme.of(context).accentColor,
+                                        // fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                'on',
+                                style: TextStyle(
+                                    color: Theme.of(context).accentColor),
+                              ),
+                              Switch(
+                                activeColor: Theme.of(context).primaryColor,
+                                value: true,
+                                onChanged: (value) {},
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                'Invite friends',
+                                style: TextStyle(
+                                    color: Theme.of(context).accentColor,
+                                    fontSize: 18,
+                                    letterSpacing: 2,
+                                    fontFamily: 'Poppins'),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              borderRadius: BorderRadius.circular(50),
+                              child: Image.asset(
+                                'assets/images/icons/codicon_live-share.png',
+                                scale: 1.1,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        GestureDetector(
+                          onTap: () => toHistoryScreen(context),
+                          child: Text(
+                            'History',
+                            style: TextStyle(
+                                color: Theme.of(context).accentColor,
+                                fontSize: 18,
+                                letterSpacing: 2,
+                                fontFamily: 'Poppins'),
+                          ),
+                        ),
+                        const Padding(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child: Text(
+                            'List',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                                color: Colors.grey),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15.h,
+                        ),
+                        InkWell(
+                          onTap: () => toAboutScreen(context),
+                          child: Container(
+                            width: double.maxFinite,
+                            height: 55.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey.withOpacity(0.2),
+                            ),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 12.0),
+                                  child: Container(
+                                    height: 36.h,
+                                    width: 36.w,
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.red),
+                                    child: Image.asset(
+                                      'assets/images/icons/alert-circle.png',
+                                      scale: 0.8,
+                                      color: Theme.of(context).accentColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 15.0),
+                                    child: Text(
+                                      'About',
+                                      style: TextStyle(
+                                          color: Theme.of(context).accentColor,
+                                          // fontWeight: FontWeight.bold,
+                                          fontSize: 18),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 15.0),
+                                    child: Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      size: 17,
+                                      color: Theme.of(context).accentColor,
+                                    ),
+                                  ),
                                 )
                               ],
                             ),
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  Container(
-                    width: double.maxFinite,
-                    height: 55.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey.withOpacity(0.20),
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 12.0),
+                        ),
+                        SizedBox(
+                          height: 15.h,
+                        ),
+                        InkWell(
+                          onTap: () => toPaymentScreen(context),
+                          splashColor: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(10),
                           child: Container(
-                            height: 36.h,
-                            width: 36.w,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.grey),
-                            child: Image.asset(
-                              'assets/images/icons/Vector.png',
-                              scale: 0.8,
+                            width: double.maxFinite,
+                            height: 55.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey.withOpacity(0.2),
                             ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 15.0),
-                            child: Text(
-                              'Dark Mode',
-                              style: TextStyle(
-                                  color: Theme.of(context).accentColor,
-                                  // fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'on',
-                          style:
-                              TextStyle(color: Theme.of(context).accentColor),
-                        ),
-                        Switch(
-                          activeColor: Theme.of(context).primaryColor,
-                          value: true,
-                          onChanged: (value) {},
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  Container(
-                    width: double.maxFinite,
-                    height: 55.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey.withOpacity(0.20),
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 12.0),
-                          child: Container(
-                            height: 36.h,
-                            width: 36.w,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.red),
-                            child: Image.asset(
-                              'assets/images/icons/flat-color-icons_like.png',
-                              scale: 0.8,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 15.0),
-                            child: Text(
-                              'Receive Notification',
-                              style: TextStyle(
-                                  color: Theme.of(context).accentColor,
-                                  // fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'on',
-                          style:
-                              TextStyle(color: Theme.of(context).accentColor),
-                        ),
-                        Switch(
-                          activeColor: Theme.of(context).primaryColor,
-                          value: true,
-                          onChanged: (value) {},
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Text(
-                          'Invite friends',
-                          style: TextStyle(
-                              color: Theme.of(context).accentColor,
-                              fontSize: 18,
-                              letterSpacing: 2,
-                              fontFamily: 'Poppins'),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(50),
-                        child: Image.asset(
-                          'assets/images/icons/codicon_live-share.png',
-                          scale: 1.1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  GestureDetector(
-                    onTap: () => toHistoryScreen(context),
-                    child: Text(
-                      'History',
-                      style: TextStyle(
-                          color: Theme.of(context).accentColor,
-                          fontSize: 18,
-                          letterSpacing: 2,
-                          fontFamily: 'Poppins'),
-                    ),
-                  ),
-                  const Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Text(
-                      'List',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                          color: Colors.grey),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  InkWell(
-                    onTap: () => toAboutScreen(context),
-                    child: Container(
-                      width: double.maxFinite,
-                      height: 55.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey.withOpacity(0.2),
-                      ),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 12.0),
-                            child: Container(
-                              height: 36.h,
-                              width: 36.w,
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle, color: Colors.red),
-                              child: Image.asset(
-                                'assets/images/icons/alert-circle.png',
-                                scale: 0.8,
-                                color: Theme.of(context).accentColor,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 15.0),
-                              child: Text(
-                                'About',
-                                style: TextStyle(
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 12.0),
+                                  child: Container(
+                                    height: 36.h,
+                                    width: 36.w,
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.red),
+                                    child: Icon(Icons.payment_outlined,
+                                        color: Theme.of(context).accentColor),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 15.0),
+                                    child: Text(
+                                      'Payment',
+                                      style: TextStyle(
+                                          color: Theme.of(context).accentColor,
+                                          // fontWeight: FontWeight.bold,
+                                          fontSize: 18),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 15.0),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    size: 17,
                                     color: Theme.of(context).accentColor,
-                                    // fontWeight: FontWeight.bold,
-                                    fontSize: 18),
-                              ),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
-                          InkWell(
-                            onTap: () {},
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 15.0),
-                              child: Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                size: 17,
-                                color: Theme.of(context).accentColor,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  InkWell(
-                    onTap: () => toPaymentScreen(context),
-                    splashColor: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      width: double.maxFinite,
-                      height: 55.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey.withOpacity(0.2),
-                      ),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 12.0),
-                            child: Container(
-                              height: 36.h,
-                              width: 36.w,
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle, color: Colors.red),
-                              child: Icon(Icons.payment_outlined,
-                                  color: Theme.of(context).accentColor),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 15.0),
-                              child: Text(
-                                'Payment',
-                                style: TextStyle(
-                                    color: Theme.of(context).accentColor,
-                                    // fontWeight: FontWeight.bold,
-                                    fontSize: 18),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 15.0),
-                            child: Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              size: 17,
-                              color: Theme.of(context).accentColor,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
     );
   }
 }

@@ -194,7 +194,7 @@ class CartFill extends StatelessWidget {
                         //   cart.items.values.toList(),
                         //   cart.totalAmount,
                         // );
-                        Navigator.of(context).pushNamed('/payments');
+                        Navigator.of(context).pushNamed('/deliveryaddress');
                         // cart.clearCart();
                       },
                       child: const Text(

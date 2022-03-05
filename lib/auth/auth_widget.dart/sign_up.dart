@@ -296,12 +296,15 @@ class _SignUpPageState extends State<SignUpPage> {
     authModel.uid = user.uid;
     authModel.fullName = fullNameController.text;
     authModel.phoneNumber = phoneNumberController.text;
+    authModel.imageUrl = user.photoURL;
 
     await firebaseFirestore
         .collection("users")
         .doc(user.uid)
         .set(authModel.toMap());
-    _isLoading = true;
+    setState(() {
+      _isLoading = true;
+    });
 
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/homepage', (route) => false);

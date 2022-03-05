@@ -7,6 +7,9 @@ class Items with ChangeNotifier {
   final String imageUrl;
   final double price;
   final String description;
+  double duration;
+  bool rate;
+
   bool isFavorite;
 
   Items({
@@ -16,6 +19,8 @@ class Items with ChangeNotifier {
     required this.imageUrl,
     required this.price,
     required this.description,
+    required this.duration,
+    required this.rate,
     this.isFavorite = false,
   });
 

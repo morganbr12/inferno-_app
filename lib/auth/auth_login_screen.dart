@@ -143,102 +143,104 @@ class _LoginScreenState extends State<LoginScreen> {
                       BoxDecoration(color: Colors.black.withOpacity(0.7)),
                 ),
                 Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/logoInferno.png',
-                        scale: 1.2,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        'Welcome Back',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 34,
-                          color: Colors.white,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/logoInferno.png',
+                          scale: 1.2,
                         ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 280,
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        padding: const EdgeInsets.only(top: 10),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context)
-                              .backgroundColor
-                              .withOpacity(0.7),
-                          borderRadius: BorderRadius.circular(20),
+                        const SizedBox(
+                          height: 10,
                         ),
-                        child: Center(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Form(
-                                    key: _formKey,
-                                    child: Column(
-                                      children: [
-                                        emailLogin,
-                                        SizedBox(
-                                          height: 25.w,
-                                        ),
-                                        passwordFill,
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 20.h,
-                              ),
-                              button,
-                              SizedBox(
-                                height: 10.h,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Don't have an account?",
-                                    style: TextStyle(
-                                      color: Theme.of(context).accentColor,
-                                    ),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (_) => SignUpScreen(),
-                                        ),
-                                      );
-                                    },
-                                    child: const Text(
-                                      'Sign Up',
-                                      style: TextStyle(
-                                          color:
-                                              Color.fromRGBO(203, 160, 68, 1)),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
+                        const Text(
+                          'Welcome Back',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 34,
+                            color: Colors.white,
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 40.h,
-                      )
-                    ],
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 280,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.only(top: 10),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context)
+                                .backgroundColor
+                                .withOpacity(0.7),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Center(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Form(
+                                      key: _formKey,
+                                      child: Column(
+                                        children: [
+                                          emailLogin,
+                                          SizedBox(
+                                            height: 25.w,
+                                          ),
+                                          passwordFill,
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20.h,
+                                ),
+                                button,
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Don't have an account?",
+                                      style: TextStyle(
+                                        color: Theme.of(context).accentColor,
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (_) => SignUpScreen(),
+                                          ),
+                                        );
+                                      },
+                                      child: const Text(
+                                        'Sign Up',
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                203, 160, 68, 1)),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 40.h,
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],

@@ -28,7 +28,7 @@ class SignUpScreen extends StatelessWidget {
               color: Colors.black.withOpacity(0.7),
             ),
           ),
-          SignUpPage()
+          const SignUpPage()
         ],
       ),
     );

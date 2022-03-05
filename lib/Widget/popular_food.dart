@@ -28,7 +28,10 @@ class PopularFood extends StatelessWidget {
 
     return Container(
       height: 255.h,
-      margin: const EdgeInsets.only(left: 10, right: 10),
+      margin: const EdgeInsets.only(
+        left: 5,
+        right: 5,
+      ),
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
         // height: 170,
@@ -51,11 +54,12 @@ class PopularFood extends StatelessWidget {
                 child: Stack(
                   children: [
                     Container(
-                      height: 175.h,
+                      height: 185.h,
                       decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(20),
-                      )),
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
                       width: MediaQuery.of(context).size.width,
                       child: ClipRRect(
                         borderRadius: const BorderRadius.vertical(
@@ -70,14 +74,14 @@ class PopularFood extends StatelessWidget {
                     ),
                     Container(
                       width: double.maxFinite,
-                      height: 175.h,
+                      height: 185.h,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
                           Container(
                             height: 42.h,
-                            width: 92.w,
+                            width: 94.w,
                             decoration: const BoxDecoration(
                               color: Colors.black87,
                               borderRadius: BorderRadius.only(
@@ -85,50 +89,53 @@ class PopularFood extends StatelessWidget {
                                 bottomRight: Radius.circular(15),
                               ),
                             ),
-                            child: Row(children: [
-                              Consumer<Items>(
-                                builder: (ctx, products, _) => Padding(
-                                  padding: const EdgeInsets.only(
-                                      bottom: 3.0, left: 15),
-                                  child: InkWell(
-                                    onTap: () {
-                                      products.toggleFavoriteStatus();
-                                      addToLiked.addLikedItem(
-                                        products.id,
-                                        products.price,
-                                        products.title,
-                                        products.imageUrl,
-                                        products.shortTitle,
-                                      );
-                                    },
-                                    borderRadius: BorderRadius.circular(50),
-                                    radius: 50.r,
-                                    child: Image.asset(
-                                      'assets/images/icons/flat-color-icons_like.png',
-                                      color: products.isFavorite
-                                          ? Colors.red
-                                          : Colors.grey,
-                                      scale: 0.8,
+                            child: Row(
+                              children: [
+                                Consumer<Items>(
+                                  builder: (ctx, products, _) => Padding(
+                                    padding: const EdgeInsets.only(
+                                        bottom: 3.0, left: 15),
+                                    child: InkWell(
+                                      onTap: () {
+                                        products.toggleFavoriteStatus();
+                                        addToLiked.addLikedItem(
+                                          products.id,
+                                          products.price,
+                                          products.title,
+                                          products.imageUrl,
+                                          products.shortTitle,
+                                        );
+                                      },
+                                      borderRadius: BorderRadius.circular(50),
+                                      radius: 50.r,
+                                      child: Image.asset(
+                                        'assets/images/icons/flat-color-icons_like.png',
+                                        color: products.isFavorite
+                                            ? Colors.red
+                                            : Colors.grey,
+                                        scale: 0.8,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  addToCart.addItem(
-                                    products.id,
-                                    products.price,
-                                    products.title,
-                                    products.imageUrl,
-                                    products.shortTitle,
-                                  );
-                                },
-                                icon: const Icon(
-                                  Feather.shopping_cart,
-                                  color: Colors.grey,
-                                ),
-                              )
-                            ]),
+                                IconButton(
+                                  onPressed: () {
+                                    addToCart.addItem(
+                                      products.id,
+                                      products.price,
+                                      products.title,
+                                      products.imageUrl,
+                                      products.shortTitle,
+                                    );
+                                  },
+                                  padding: const EdgeInsets.only(bottom: 5),
+                                  icon: const Icon(
+                                    Feather.shopping_cart,
+                                    color: Colors.grey,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -146,7 +153,7 @@ class PopularFood extends StatelessWidget {
                               topRight: Radius.circular(15),
                             )),
                         child: const Padding(
-                          padding: EdgeInsets.only(top: 8.0),
+                          padding: EdgeInsets.only(top: 12.0),
                           child: Text(
                             '30 - 34min',
                             textAlign: TextAlign.center,
@@ -158,15 +165,19 @@ class PopularFood extends StatelessWidget {
                 ),
               ),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Text(products.title,
-                      style: Theme.of(context).textTheme.headline1),
-                ),
-              ],
+            Flexible(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      products.title,
+                      style: Theme.of(context).textTheme.headline1,
+                    ),
+                  ),
+                ],
+              ),
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,

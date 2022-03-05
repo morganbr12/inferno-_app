@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:inferno/screens/love.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:provider/provider.dart';
 
+import '../Widget/app_bar.dart';
 import '../Widget/home.dart';
 import '../screens/nofication.dart';
-import '../screens/cart_screen.dart';
+import 'track_order_screen.dart';
 import '../models/notificationList.dart';
 import '../Widget/badge.dart';
 import '../provider/cart_provider.dart';
+import '../screens/search_item_screen.dart';
 
 class InfernoHomePage extends StatefulWidget {
   const InfernoHomePage({Key? key}) : super(key: key);
@@ -24,6 +27,7 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
   static const List<Widget> _tapNavButton = [
     HomeBody(),
     LikedScreen(),
+    SearchScreen(),
     NotificationArea(),
     CartScreen(),
   ];
@@ -85,24 +89,26 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
       ),
     );
 
+    final drawerConnect = Container(
+      margin: const EdgeInsets.only(left: 15, bottom: 15, top: 10),
+      child: InkWell(
+        onTap: () => toProfileScreen(context),
+        child: CircleAvatar(
+          backgroundColor: Theme.of(context).accentColor,
+          child: const Icon(
+            Icons.person,
+            color: Colors.grey,
+          ),
+        ),
+      ),
+    );
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: title,
         centerTitle: true,
-        leading: Container(
-          margin: const EdgeInsets.only(left: 15, bottom: 15, top: 10),
-          child: InkWell(
-            onTap: () => toProfileScreen(context),
-            child: CircleAvatar(
-              backgroundColor: Theme.of(context).accentColor,
-              child: const Icon(
-                Icons.person,
-                color: Colors.grey,
-              ),
-            ),
-          ),
-        ),
+        leading: drawerConnect,
         actions: [
           Consumer<Cart>(
             builder: (_, cart, ch) => Badge(
@@ -122,19 +128,34 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
       body: SafeArea(
         child: _tapNavButton.elementAt(_selectedIndex),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(
-          Feather.search,
-          color: Colors.black,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              _selectedIndex = 2;
+            });
+          },
+          child: const Icon(
+            Feather.search,
+            color: Colors.black,
+          ),
+          hoverElevation: 10,
+          tooltip: 'search',
+          backgroundColor: Colors.white,
         ),
-        backgroundColor: Colors.white,
       ),
       bottomNavigationBar: SizedBox(
-        height: 58.h,
-        child: bottonNavBar(context),
-      ),
+          // height: 62.h,
+          child: BottomAppBar(
+              shape: const CircularNotchedRectangle(),
+              notchMargin: 0.01,
+              clipBehavior: Clip.hardEdge,
+              child: Container(
+                  height: kBottomNavigationBarHeight,
+                  child: Container(child: bottonNavBar(context))))),
     );
   }
 
@@ -147,21 +168,30 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
       backgroundColor: Theme.of(context).primaryColor,
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
+      // landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
       type: BottomNavigationBarType.fixed,
+      elevation: 0,
       selectedFontSize: 12,
       currentIndex: _selectedIndex,
       onTap: _onTapItem,
       items: <BottomNavigationBarItem>[
         const BottomNavigationBarItem(icon: Icon(Feather.home), label: 'Home'),
-        const BottomNavigationBarItem(icon: Icon(Feather.heart), label: 'love'),
+        const BottomNavigationBarItem(icon: Icon(Feather.heart), label: 'like'),
+        const BottomNavigationBarItem(
+          tooltip: 'search',
+          activeIcon: null,
+          icon: Icon(null),
+          label: 'null',
+        ),
         const BottomNavigationBarItem(
             icon: Icon(Feather.bell), label: 'Notification'),
         BottomNavigationBarItem(
-            icon: InkWell(
-                onTap: () => toTrackingPage(context),
-                child: const Icon(Icons.directions_car)),
-            label: 'Cart')
+          icon: InkWell(
+            onTap: () => toTrackingPage(context),
+            child: const Icon(Icons.directions_car),
+          ),
+          label: 'Cart',
+        )
       ],
     );
   }

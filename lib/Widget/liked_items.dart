@@ -26,6 +26,18 @@ class ListOfLikedItems extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
+              child: Text(
+                'Cart is Empty!',
+                style: TextStyle(
+                  color: Theme.of(context).accentColor,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30.h,
+            ),
+            Container(
               width: width * 6,
               child: Text(
                 "You do not have anything in your favorite...",

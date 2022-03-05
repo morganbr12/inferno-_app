@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class CartItem {
   final String id;
   final String title;
   final String shortTitle;
   final String imageUrl;
-  final double price;
-  final double quantity;
+  double price;
+  double quantity;
 
   CartItem({
     required this.id,
@@ -29,27 +30,10 @@ class Cart with ChangeNotifier {
     return _items.length;
   }
 
-  // double get totalOrder {
-  //   var order = 0.0;
-  //   _items.forEach((key, cartOrder) {
-  //     order = (cartOrder.pr)
-  //   });
-  //   return order;
-  // }
-
-  // double get quantityIncrease {
-  //   var quant = 0.0;
-
-  //   _items.addAll((Map<String, CartItem> => ) {
-  //     quant += (qty.quantity);
-  //   });
-  //   return quant;
-  // }
-
   double get totalAmount {
     var total = 0.0;
     _items.forEach((key, cartItem) {
-      total += (cartItem.price * cartItem.quantity);
+      total += (cartItem.price);
     });
     return total;
   }
@@ -63,17 +47,18 @@ class Cart with ChangeNotifier {
   ) {
     if (_items.containsKey(productId)) {
       // update the exiting quantity
-      _items.update(
-        productId,
-        (existingCartItem) => CartItem(
-          id: DateTime.now().toString(),
-          title: title,
-          shortTitle: shortTitle,
-          imageUrl: imageUrl,
-          price: price,
-          quantity: existingCartItem.quantity + 1,
-        ),
-      );
+      // _items.update(
+      //   productId,
+      //   (existingCartItem) => CartItem(
+      //     id: DateTime.now().toString(),
+      //     title: title,
+      //     shortTitle: shortTitle,
+      //     imageUrl: imageUrl,
+      //     price: price,
+      //     quantity: existingCartItem.quantity + 1,
+      //   ),
+      // );
+      return;
     } else {
       // adding new item into the cart
       _items.putIfAbsent(
@@ -89,6 +74,56 @@ class Cart with ChangeNotifier {
       );
     }
 
+    notifyListeners();
+  }
+
+  void decreaseQtyAndPric(
+      String productId,
+      double price,
+      double quantity,
+      String title,
+      String imageUrl,
+      String shortTitle,) {
+    if (quantity > 1 ) {
+      _items.update(
+        productId,
+            (existingCartItem) => CartItem(
+          id: DateTime.now().toString(),
+          title: title,
+          shortTitle: shortTitle,
+          imageUrl: imageUrl,
+          price: existingCartItem.price - price,
+          quantity: existingCartItem.quantity - 1,
+        ),
+      );
+    } else{
+      return;
+    }
+    notifyListeners();
+  }
+
+  void increaseQtyAndPric(
+      String productId,
+      double price,
+      String title,
+      String imageUrl,
+      String shortTitle,
+      double quantity,
+      ) {
+    if (quantity >= 1) {
+      //update the exiting quantity
+      _items.update(
+        productId,
+        (existingCartItem) => CartItem(
+          id: DateTime.now().toString(),
+          title: title,
+          shortTitle: shortTitle,
+          imageUrl: imageUrl,
+          price:  quantity * price,
+          quantity: existingCartItem.quantity += 1,
+        ),
+      );
+    }
     notifyListeners();
   }
 

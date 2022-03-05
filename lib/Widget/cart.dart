@@ -82,7 +82,7 @@ class _CartPageState extends State<CartPage> {
                     Padding(
                       padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
-                        '\Ghc ${widget.price * widget.quantity}',
+                        '\Ghc ${widget.price}',
                         style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontSize: 16),
@@ -94,8 +94,29 @@ class _CartPageState extends State<CartPage> {
               children: [
                 IconButton(
                   onPressed: () {
-                    Provider.of<Cart>(context, listen: false)
-                        .removeItem(widget.productId);
+                    showDialog(
+                      context: context,
+                      builder: (ctx) => AlertDialog(
+                        title: const Text("Are you sure?"),
+                        content: const Text('Do you want to remove the Item'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(ctx).pop(false);
+                            },
+                            child: const Text('No'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Provider.of<Cart>(context, listen: false)
+                                  .removeItem(widget.productId);
+                              Navigator.of(ctx).pop(true);
+                            },
+                            child: const Text("delete"),
+                          ),
+                        ],
+                      ),
+                    );
                   },
                   icon: Icon(
                     Icons.delete,
@@ -110,13 +131,8 @@ class _CartPageState extends State<CartPage> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          setState(() {
-                            if (widget.quantity == 1) {
-                              return;
-                            } else {
-                              widget.quantity -= 1;
-                            }
-                          });
+                          Provider.of<Cart>(context, listen: false)
+                              .decreaseQtyAndPric(widget.productId, widget.price,widget.quantity, widget.title, widget.imageUrl, widget.shortTitle,);
                         },
                         icon: Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
@@ -130,9 +146,11 @@ class _CartPageState extends State<CartPage> {
                       Text('${widget.quantity}'),
                       IconButton(
                         onPressed: () {
-                          setState(() {
-                            widget.quantity += 1;
-                          });
+                          Provider.of<Cart>(context, listen: false)
+                              .increaseQtyAndPric(widget.productId, widget.price, widget.title, widget.imageUrl, widget.shortTitle,widget.quantity,);
+                          // setState(() {
+                          //   widget.quantity += 1;
+                          // });
                         },
                         icon: Padding(
                           padding: const EdgeInsets.only(bottom: 0.0),

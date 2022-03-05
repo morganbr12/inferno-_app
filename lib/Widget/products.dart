@@ -14,20 +14,18 @@ class FoodProducts extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        child: ListView.builder(
-            itemCount: prod.length,
-            itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-                  value: prod[i],
-                  child: const PopularFood(
-                      // prod[i].id,
-                      // prod[i].title,
-                      // prod[i].imageUrl,
-                      // prod[i].price,
-                      // prod[i].description,
-                      ),
-                )),
+      child: ListView.builder(
+        itemCount: prod.length,
+        itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+          value: prod[i],
+          child: const PopularFood(
+              // prod[i].id,
+              // prod[i].title,
+              // prod[i].imageUrl,
+              // prod[i].price,
+              // prod[i].description,
+              ),
+        ),
       ),
     );
   }
