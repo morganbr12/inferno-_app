@@ -3,14 +3,14 @@ class Auth {
   String? email;
   String? fullName;
   String? phoneNumber;
-  String? imageUrl;
+  String? photoUrl;
 
   Auth({
     this.uid,
     this.email,
     this.fullName,
     this.phoneNumber,
-    this.imageUrl,
+    this.photoUrl,
   });
 
   // receiving data from server
@@ -21,7 +21,7 @@ class Auth {
         email: map['email'],
         fullName: map['fullName'],
         phoneNumber: map['phoneNumber'],
-        imageUrl: map['imageUrl']);
+        photoUrl: map['imageUrl']);
   }
 
   // sending data to our server
@@ -32,7 +32,7 @@ class Auth {
       "email": email,
       "fullName": fullName,
       "phoneNumber": phoneNumber,
-      'imageUrl': imageUrl,
+      'photoUrl': photoUrl,
     };
   }
 }

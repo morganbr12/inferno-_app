@@ -54,6 +54,8 @@ dependencies:
   path: ^1.8.0
   path_provider: ^2.0.9
   carousel_pro: ^1.0.0
+  shared_preferences: ^2.0.13
+  flutter_secure_storage: ^5.0.2
 
 dev_dependencies:
   flutter_test:

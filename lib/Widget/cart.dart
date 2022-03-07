@@ -132,7 +132,14 @@ class _CartPageState extends State<CartPage> {
                       IconButton(
                         onPressed: () {
                           Provider.of<Cart>(context, listen: false)
-                              .decreaseQtyAndPric(widget.productId, widget.price,widget.quantity, widget.title, widget.imageUrl, widget.shortTitle,);
+                              .decreaseQtyAndPric(
+                            widget.productId,
+                            widget.price,
+                            widget.quantity,
+                            widget.title,
+                            widget.imageUrl,
+                            widget.shortTitle,
+                          );
                         },
                         icon: Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
@@ -147,7 +154,14 @@ class _CartPageState extends State<CartPage> {
                       IconButton(
                         onPressed: () {
                           Provider.of<Cart>(context, listen: false)
-                              .increaseQtyAndPric(widget.productId, widget.price, widget.title, widget.imageUrl, widget.shortTitle,widget.quantity,);
+                              .increaseQtyAndPric(
+                            widget.productId,
+                            widget.price,
+                            widget.title,
+                            widget.imageUrl,
+                            widget.shortTitle,
+                            widget.quantity,
+                          );
                           // setState(() {
                           //   widget.quantity += 1;
                           // });

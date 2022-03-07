@@ -1,5 +1,7 @@
 // @dart=2.9
 
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,8 +52,32 @@ void main() async {
   runApp(const InfernoApp());
 }
 
-class InfernoApp extends StatelessWidget {
+class InfernoApp extends StatefulWidget {
   const InfernoApp({Key key}) : super(key: key);
+
+  @override
+  State<InfernoApp> createState() => _InfernoAppState();
+}
+
+class _InfernoAppState extends State<InfernoApp> {
+  StreamSubscription<User> user;
+  @override
+  void initState() {
+    super.initState();
+    user = FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user == null) {
+        const WelcomeScreen();
+      } else {
+        const InfernoHomePage();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    user.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +155,9 @@ class InfernoApp extends StatelessWidget {
             ),
           ),
           title: "Inferno App",
-          home: const InfernoHomePage(),
+          home: FirebaseAuth.instance.currentUser == null
+              ? const WelcomeScreen()
+              : const InfernoHomePage(),
           routes: {
             '/welcome': (ctx) => const WelcomeScreen(),
             '/login': (ctx) => const LoginScreen(),

@@ -17,7 +17,7 @@ class ImagePickery extends StatefulWidget {
 }
 
 class _ImagePickeryState extends State<ImagePickery> {
-  File? _storedImage;
+  File? _profileImage;
   User? user = FirebaseAuth.instance.currentUser;
 
   Future<void> _takePicture() async {
@@ -26,21 +26,6 @@ class _ImagePickeryState extends State<ImagePickery> {
       source: ImageSource.gallery,
       maxWidth: 600,
     );
-
-    setState(() {
-      _storedImage = File(imageFile!.path);
-    });
-    final appDir = await syspath.getApplicationDocumentsDirectory();
-    final fileName = path.basename(imageFile!.path);
-    final savedImage = await imageFile.saveTo("${appDir.path}/$fileName");
-
-    // FirebaseFirestore.instance.collection('users').doc(user!.uid).update({
-    //   'uid': user!.uid,
-    //   'fullName': user!.displayName,
-    //   'phoneNumber': user!.phoneNumber,
-    //   'email': user!.email,
-    //   'storeImage': imageFile,
-    // });
   }
 
   @override
@@ -48,7 +33,7 @@ class _ImagePickeryState extends State<ImagePickery> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _storedImage == null
+        _profileImage == null
             ? Container(
                 height: 98.h,
                 width: 98.w,
@@ -71,7 +56,7 @@ class _ImagePickeryState extends State<ImagePickery> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: Image.file(
-                    _storedImage!,
+                    _profileImage!,
                     fit: BoxFit.cover,
                   ),
                 ),

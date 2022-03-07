@@ -60,43 +60,43 @@ class ViewFood extends StatelessWidget {
                     const SizedBox(
                       height: 8,
                     ),
-                    Container(
-                      height: 44.h,
-                      width: 115.w,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Theme.of(context).primaryColor),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
-                            child: IconButton(
-                              splashColor: Theme.of(context).splashColor,
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.minimize,
-                                size: 15,
-                                color: Theme.of(context).accentColor,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            '1',
-                            style:
-                                TextStyle(color: Theme.of(context).accentColor),
-                          ),
-                          IconButton(
-                            splashColor: Theme.of(context).splashColor,
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.add,
-                              size: 15,
-                              color: Theme.of(context).accentColor,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                    // Container(
+                    //   height: 44.h,
+                    //   width: 115.w,
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(30),
+                    //       color: Theme.of(context).primaryColor),
+                    //   child: Row(
+                    //     children: [
+                    //       Padding(
+                    //         padding: const EdgeInsets.only(bottom: 8.0),
+                    //         child: IconButton(
+                    //           splashColor: Theme.of(context).splashColor,
+                    //           onPressed: () {},
+                    //           icon: Icon(
+                    //             Icons.minimize,
+                    //             size: 15,
+                    //             color: Theme.of(context).accentColor,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       Text(
+                    //         '1',
+                    //         style:
+                    //             TextStyle(color: Theme.of(context).accentColor),
+                    //       ),
+                    //       IconButton(
+                    //         splashColor: Theme.of(context).splashColor,
+                    //         onPressed: () {},
+                    //         icon: Icon(
+                    //           Icons.add,
+                    //           size: 15,
+                    //           color: Theme.of(context).accentColor,
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
                     const SizedBox(
                       height: 10,
                     ),
