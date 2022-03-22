@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart' as syspath;
-import '../auth/auth_controllers/authMode.dart';
+// import 'package:path/path.dart' as path;
+// import 'package:path_provider/path_provider.dart' as syspath;
+// import '../auth/auth_controllers/authMode.dart';
 
 class ImagePickery extends StatefulWidget {
   const ImagePickery({Key? key}) : super(key: key);
@@ -26,6 +26,9 @@ class _ImagePickeryState extends State<ImagePickery> {
       source: ImageSource.gallery,
       maxWidth: 600,
     );
+    setState(() {
+      // _profileImage = imageFile;
+    });
   }
 
   @override

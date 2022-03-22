@@ -8,7 +8,7 @@ class Items with ChangeNotifier {
   final double price;
   final String description;
   double duration;
-  bool rate;
+  int rate;
 
   bool isFavorite;
 
@@ -20,7 +20,7 @@ class Items with ChangeNotifier {
     required this.price,
     required this.description,
     required this.duration,
-    required this.rate,
+    this.rate = 0,
     this.isFavorite = false,
   });
 
@@ -30,12 +30,12 @@ class Items with ChangeNotifier {
   }
 }
 
-class category {
+class Category {
   final String id;
   final String title;
   final String imageUrl;
 
-  const category({
+  const Category({
     required this.id,
     required this.title,
     required this.imageUrl,

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inferno/models/list.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/product_provider.dart';
+// import '../provider/product_provider.dart';
 import '../provider/cart_provider.dart';
 import '../provider/liked_item.dart';
 
@@ -15,10 +15,6 @@ class PopularFood extends StatelessWidget {
   // final double price;
   // final String description;
   const PopularFood({Key? key}) : super(key: key);
-
-  // void toViewFullPage(BuildContext context) {
-  //    Navigator.of(context).pushNamed('/viewfood', arguments: products.id);
-  // }
 
   @override
   Widget build(BuildContext context) {

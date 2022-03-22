@@ -125,7 +125,8 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
           ),
         ],
       ),
-      extendBodyBehindAppBar: true,
+      extendBody: true,
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: _tapNavButton.elementAt(_selectedIndex),
       ),

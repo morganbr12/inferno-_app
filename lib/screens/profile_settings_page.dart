@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../auth/auth_controllers/authMode.dart';
 import '../Widget/back_arrow.dart';
 import '../Widget/image_picker.dart' as img;
-import '../auth/auth_controllers/authMode.dart';
+// import '../auth/auth_controllers/authMode.dart';
 
 class ProfileSettingsPage extends StatefulWidget {
   const ProfileSettingsPage({Key? key}) : super(key: key);

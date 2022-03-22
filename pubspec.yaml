@@ -74,6 +74,7 @@ flutter_icons:
   # image_path_ios: "assets/images/ios/log.png"
   image_path_android: "assets/images/android/log.png"
   image_path: "assets/images/log.png"
+  adaptive_icon_background: '#161622'
 
 flutter_native_splash:
   color: "#161622"

@@ -10,17 +10,17 @@ class Slider {
 
 const SliderList = [
   Slider(
-    title: 'Fastest In Delivery Food',
+    title: 'The Fastest In Food Delivery',
     description: 'Our objective is to fill your Stomach'
         ' with tasty meals and deliver it quickly.',
   ),
   Slider(
-    title: 'The Fastest In Delivery Food',
+    title: 'The Fastest In Food Delivery',
     description: 'Our objective is to fill your stomach'
         ' with tasty meals and deliver it quickly.',
   ),
   Slider(
-    title: 'The Fastest In Delivery Food',
+    title: 'The Fastest In Food Delivery',
     description: 'Our objective is to fill your stomach'
         ' with tasty meals and deliver it quickly.',
   )

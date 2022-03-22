@@ -15,7 +15,7 @@ import './provider/liked_item.dart';
 import './provider/product_provider.dart';
 
 // import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
-import 'firebase_options.dart';
+// import 'firebase_options.dart';
 
 import 'screens/track_order_screen.dart';
 import './screens/cart_fill.dart';
