@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:inferno/screens/love.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:provider/provider.dart';
 
-import '../Widget/app_bar.dart';
+// import '../Widget/app_bar.dart';
 import '../Widget/home.dart';
 import '../screens/nofication.dart';
 import 'track_order_screen.dart';
@@ -13,6 +13,8 @@ import '../models/notificationList.dart';
 import '../Widget/badge.dart';
 import '../provider/cart_provider.dart';
 import '../screens/search_item_screen.dart';
+import '../Widget/search_widget.dart';
+import '../Widget/search_for_food.dart';
 
 class InfernoHomePage extends StatefulWidget {
   const InfernoHomePage({Key? key}) : super(key: key);
@@ -63,29 +65,37 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
     final title = Container(
       margin: const EdgeInsets.all(6),
       padding: const EdgeInsets.only(right: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Feather.map_pin,
-            size: 20,
-            color: Theme.of(context).primaryColor,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 6.0),
-            child: Text(
-              'Madina, Accra',
-              style: Theme.of(context).appBarTheme.titleTextStyle,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 6.0),
-            child: Icon(
-              Icons.keyboard_arrow_down_sharp,
+      child: InkWell(
+        onTap: () {
+          showSearch(
+            context: context,
+            delegate: CustomSearchDelegate(),
+          );
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Feather.map_pin,
+              size: 20,
               color: Theme.of(context).primaryColor,
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.only(left: 6.0),
+              child: Text(
+                'Madina, Accra',
+                style: Theme.of(context).appBarTheme.titleTextStyle,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 6.0),
+              child: Icon(
+                Icons.keyboard_arrow_down_sharp,
+                color: Theme.of(context).primaryColor,
+              ),
+            )
+          ],
+        ),
       ),
     );
 
@@ -137,7 +147,7 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
         child: FloatingActionButton(
           onPressed: () {
             setState(() {
-              _selectedIndex = 2;
+              showSearch(context: context, delegate: SearchForFood());
             });
           },
           child: const Icon(
@@ -177,8 +187,14 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
       currentIndex: _selectedIndex,
       onTap: _onTapItem,
       items: <BottomNavigationBarItem>[
-        const BottomNavigationBarItem(icon: Icon(Feather.home), label: 'Home'),
-        const BottomNavigationBarItem(icon: Icon(Feather.heart), label: 'like'),
+        const BottomNavigationBarItem(
+          icon: Icon(Feather.home),
+          label: 'Home',
+        ),
+        const BottomNavigationBarItem(
+          icon: Icon(Feather.heart),
+          label: 'like',
+        ),
         const BottomNavigationBarItem(
           tooltip: 'search',
           activeIcon: null,
@@ -186,7 +202,9 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
           label: 'null',
         ),
         const BottomNavigationBarItem(
-            icon: Icon(Feather.bell), label: 'Notification'),
+          icon: Icon(Feather.bell),
+          label: 'Notification',
+        ),
         BottomNavigationBarItem(
           icon: InkWell(
             onTap: () => toTrackingPage(context),

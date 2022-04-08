@@ -92,7 +92,7 @@ class _OnArrivalMessageState extends State<OnArrivalMessage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Container(
+                    child: SizedBox(
                       height: 60,
                       width: MediaQuery.of(context).size.width,
                       child: Center(

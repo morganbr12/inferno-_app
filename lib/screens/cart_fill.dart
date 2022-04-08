@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:inferno/provider/ordered_item.dart';
@@ -31,27 +32,38 @@ class _CartFillState extends State<CartFill>
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        appBar: AppBar(
-          centerTitle: true,
-          leading: leadingIcon(context),
-        ),
-        extendBodyBehindAppBar: true,
-        bottomSheet: TabBar(
-          controller: _controller,
-          tabs: const [
-            Tab(
-              text: 'Cart',
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          backgroundColor: Theme.of(context).backgroundColor,
+          appBar: AppBar(
+            centerTitle: true,
+            leading: leadingIcon(context),
+            bottom: TabBar(
+              padding: const EdgeInsets.only(right: 5, left: 5),
+              dragStartBehavior: DragStartBehavior.start,
+              controller: _controller,
+              indicatorColor: Theme.of(context).primaryColor,
+              labelColor: Theme.of(context).accentColor,
+              tabs: const [
+                Tab(
+                  text: 'Cart',
+                ),
+                Tab(
+                  text: 'Order',
+                ),
+              ],
             ),
-            Tab(
-              text: 'Order',
-            ),
-          ],
-        ),
-        body: TabBarView(
+          ),
+          extendBodyBehindAppBar: true,
+          body: TabBarView(
             controller: _controller,
-            children: [BuyNewFoodCart(), OrdersItem()]),
+            children: const [
+              BuyNewFoodCart(),
+              OrdersItem(),
+            ],
+          ),
+        ),
       ),
     );
   }

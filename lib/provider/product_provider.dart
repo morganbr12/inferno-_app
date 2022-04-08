@@ -23,62 +23,62 @@ class Products with ChangeNotifier {
           'This is accompanied by a platoon of fries '
           '[yam, potato, cassava, or cocoyam]',
     ),
-    Items(
-      id: 'b',
-      title: 'Burger',
-      shortTitle: 'Cheezy Mozarella',
-      imageUrl: 'assets/images/foodImages/burger.png',
-      price: 50,
-      duration: 30 - 45,
-      rate: 0,
-      description: 'The ultimate in burgers. 4 beef patties, '
-          'sandwiched between two fresh mega buns, surrounded '
-          'by an army of veg and encapsulated in 5 cheese slices. '
-          'This is accompanied by a platoon of fries '
-          '[yam, potato, cassava, or cocoyam].',
-    ),
-    Items(
-      id: 'c',
-      title: 'Burger',
-      shortTitle: 'Cheezy Mozarella',
-      imageUrl: 'assets/images/foodImages/kakratua.png',
-      price: 22,
-      duration: 30 - 45,
-      rate: 0,
-      description: ' ultimate in burgers. 4 beef patties, '
-          'sandwiched between two fresh mega buns, surrounded '
-          'by an army of veg and encapsulated in 5 cheese slices. '
-          'This is accompanied by a platoon of fries '
-          '[yam, potato, cassava, or cocoyam]',
-    ),
-    Items(
-      id: 'd',
-      title: 'Burger',
-      shortTitle: 'Cheezy Mozarella',
-      imageUrl: 'assets/images/foodImages/kakratua.png',
-      price: 50,
-      duration: 30 - 45,
-      rate: 0,
-      description: ' ultimate in burgers. 4 beef patties, '
-          'sandwiched between two fresh mega buns, surrounded '
-          'by an army of veg and encapsulated in 5 cheese slices. '
-          'This is accompanied by a platoon of fries '
-          '[yam, potato, cassava, or cocoyam]',
-    ),
-    Items(
-      id: 'e',
-      title: 'Burger',
-      shortTitle: 'Cheezy Mozarella',
-      imageUrl: 'assets/images/foodImages/kakratua.png',
-      price: 70,
-      duration: 30 - 45,
-      rate: 0,
-      description: ' ultimate in burgers. 4 beef patties, '
-          'sandwiched between two fresh mega buns, surrounded '
-          'by an army of veg and encapsulated in 5 cheese slices. '
-          'This is accompanied by a platoon of fries '
-          '[yam, potato, cassava, or cocoyam]',
-    )
+    // Items(
+    //   id: 'b',
+    //   title: 'Burger',
+    //   shortTitle: 'Cheezy Mozarella',
+    //   imageUrl: 'assets/images/foodImages/burger.png',
+    //   price: 50,
+    //   duration: 30 - 45,
+    //   rate: 0,
+    //   description: 'The ultimate in burgers. 4 beef patties, '
+    //       'sandwiched between two fresh mega buns, surrounded '
+    //       'by an army of veg and encapsulated in 5 cheese slices. '
+    //       'This is accompanied by a platoon of fries '
+    //       '[yam, potato, cassava, or cocoyam].',
+    // ),
+    // Items(
+    //   id: 'c',
+    //   title: 'Burger',
+    //   shortTitle: 'Cheezy Mozarella',
+    //   imageUrl: 'assets/images/foodImages/kakratua.png',
+    //   price: 22,
+    //   duration: 30 - 45,
+    //   rate: 0,
+    //   description: ' ultimate in burgers. 4 beef patties, '
+    //       'sandwiched between two fresh mega buns, surrounded '
+    //       'by an army of veg and encapsulated in 5 cheese slices. '
+    //       'This is accompanied by a platoon of fries '
+    //       '[yam, potato, cassava, or cocoyam]',
+    // ),
+    // Items(
+    //   id: 'd',
+    //   title: 'Burger',
+    //   shortTitle: 'Cheezy Mozarella',
+    //   imageUrl: 'assets/images/foodImages/kakratua.png',
+    //   price: 50,
+    //   duration: 30 - 45,
+    //   rate: 0,
+    //   description: ' ultimate in burgers. 4 beef patties, '
+    //       'sandwiched between two fresh mega buns, surrounded '
+    //       'by an army of veg and encapsulated in 5 cheese slices. '
+    //       'This is accompanied by a platoon of fries '
+    //       '[yam, potato, cassava, or cocoyam]',
+    // ),
+    // Items(
+    //   id: 'e',
+    //   title: 'Burger',
+    //   shortTitle: 'Cheezy Mozarella',
+    //   imageUrl: 'assets/images/foodImages/kakratua.png',
+    //   price: 70,
+    //   duration: 30 - 45,
+    //   rate: 0,
+    //   description: ' ultimate in burgers. 4 beef patties, '
+    //       'sandwiched between two fresh mega buns, surrounded '
+    //       'by an army of veg and encapsulated in 5 cheese slices. '
+    //       'This is accompanied by a platoon of fries '
+    //       '[yam, potato, cassava, or cocoyam]',
+    // )
   ];
 
   List<Items> get _FOOD_ITEM {

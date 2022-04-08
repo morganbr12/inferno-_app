@@ -82,28 +82,28 @@ class _HomeBodyState extends State<HomeBody> {
                   const SizedBox(
                     height: 7,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0, left: 10),
-                    child: Text(
-                      'Categories',
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 55.h,
-                    width: double.maxFinite,
-                    child: ListView(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      children: Categories.map((cat) => ChooseFoodItem(
-                            cat.title,
-                            cat.imageUrl,
-                          )).toList(),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(bottom: 8.0, left: 10),
+                  //   child: Text(
+                  //     'Categories',
+                  //     style: Theme.of(context).textTheme.headline2,
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 55.h,
+                  //   width: double.maxFinite,
+                  //   child: ListView(
+                  //     shrinkWrap: true,
+                  //     scrollDirection: Axis.horizontal,
+                  //     children: Categories.map((cat) => ChooseFoodItem(
+                  //           cat.title,
+                  //           cat.imageUrl,
+                  //         )).toList(),
+                  //   ),
+                  // ),
+                  // const SizedBox(
+                  //   height: 8,
+                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

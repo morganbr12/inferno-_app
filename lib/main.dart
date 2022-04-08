@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:inferno/models/search_choose.dart';
 import 'package:provider/provider.dart';
 
 // import 'package:inferno/Widget/orders.dart';
@@ -42,6 +43,7 @@ import 'screens/payment_page_screen.dart';
 import './screens/history.dart';
 import './screens/enter_delivery_address_screen.dart';
 import './screens/on_arrival_message.dart';
+// import './Widget/search_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -105,6 +107,9 @@ class _InfernoAppState extends State<InfernoApp> {
           ChangeNotifierProvider(
             create: (ctx) => Ordered(),
           ),
+          ChangeNotifierProvider(
+            create: (ctx) => CurrentLocationFilter(),
+          )
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

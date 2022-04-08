@@ -38,6 +38,8 @@ class _CartScreenState extends State<CartScreen> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(60),
                     child: const GoogleMap(
+                      mapToolbarEnabled: false,
+                      zoomControlsEnabled: false,
                       initialCameraPosition: CameraPosition(
                         target: LatLng(5.668817, -0.1877119),
                         zoom: 15,
@@ -169,7 +171,7 @@ class _CartScreenState extends State<CartScreen> {
                   child: Column(
                     children: [
                       Container(
-                        height: 10,
+                        height: 8,
                         width: 3,
                         decoration: const BoxDecoration(color: Colors.grey),
                       ),
@@ -177,23 +179,7 @@ class _CartScreenState extends State<CartScreen> {
                         height: 2.h,
                       ),
                       Container(
-                        height: 10,
-                        width: 3,
-                        decoration: const BoxDecoration(color: Colors.grey),
-                      ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Container(
-                        height: 10,
-                        width: 3,
-                        decoration: const BoxDecoration(color: Colors.grey),
-                      ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Container(
-                        height: 10,
+                        height: 8,
                         width: 3,
                         decoration: const BoxDecoration(color: Colors.grey),
                       ),

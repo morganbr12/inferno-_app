@@ -56,6 +56,7 @@ dependencies:
   carousel_pro: ^1.0.0
   shared_preferences: ^2.0.13
   flutter_secure_storage: ^5.0.2
+  rename: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -71,8 +72,8 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  # image_path_ios: "assets/images/ios/log.png"
-  image_path_android: "assets/images/android/log.png"
+  # image_path_ios: "assets/images/ios/1024.png"
+  image_path_android: "assets/images/android/1024.png"
   image_path: "assets/images/log.png"
   adaptive_icon_background: '#161622'
 
