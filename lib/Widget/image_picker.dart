@@ -1,13 +1,15 @@
 import 'dart:io';
 
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:path/path.dart' as path;
-// import 'package:path_provider/path_provider.dart' as syspath;
-// import '../auth/auth_controllers/authMode.dart';
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart' as syspaths;
+import 'package:rename/rename.dart';
+import '../auth/auth_controllers/authMode.dart';
 
 class ImagePickery extends StatefulWidget {
   const ImagePickery({Key? key}) : super(key: key);
@@ -20,6 +22,8 @@ class _ImagePickeryState extends State<ImagePickery> {
   File? _profileImage;
   User? user = FirebaseAuth.instance.currentUser;
 
+  Auth authModel = Auth();
+
   Future<void> _takePicture() async {
     final picker = ImagePicker();
     final imageFile = await picker.pickImage(
@@ -27,8 +31,11 @@ class _ImagePickeryState extends State<ImagePickery> {
       maxWidth: 600,
     );
     setState(() {
-      // _profileImage = imageFile;
+      _profileImage = File(imageFile!.path);
     });
+    final appDir = await syspaths.getApplicationDocumentsDirectory();
+    path.basename(imageFile!.path);
+    final savedImage = imageFile.saveTo('${appDir.path}/$fileRepository');
   }
 
   @override
@@ -50,10 +57,10 @@ class _ImagePickeryState extends State<ImagePickery> {
                 ),
               )
             : Container(
-                height: 98.h,
-                width: 98.w,
+                height: 130.h,
+                width: 130.w,
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
+                  borderRadius: BorderRadius.circular(65),
                   color: Theme.of(context).accentColor,
                 ),
                 child: ClipRRect(
@@ -68,7 +75,15 @@ class _ImagePickeryState extends State<ImagePickery> {
           height: 25.h,
         ),
         InkWell(
-          onTap: _takePicture,
+          onTap: () async {
+            _takePicture();
+            final ref = FirebaseStorage.instance
+                .ref()
+                .child('usersImages')
+                .child(authModel.fullName! + '.jpg');
+            await ref.putFile(_profileImage!);
+            final url = await ref.getDownloadURL();
+          },
           child: Text(
             'Upload Photo',
             style: TextStyle(

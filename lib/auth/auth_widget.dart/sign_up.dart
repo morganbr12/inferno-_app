@@ -186,8 +186,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               }
                             },
                             onSaved: (value) {
-                              passwordController =
-                                  value as TextEditingController;
+                              passwordController.text = value!;
                             },
                             textInputAction: TextInputAction.done,
                             controller: passwordController,

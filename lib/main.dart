@@ -44,6 +44,7 @@ import './screens/history.dart';
 import './screens/enter_delivery_address_screen.dart';
 import './screens/on_arrival_message.dart';
 // import './Widget/search_widget.dart';
+import './auth/reset_password_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -186,6 +187,7 @@ class _InfernoAppState extends State<InfernoApp> {
             '/history': (ctx) => const HistoryScreen(),
             '/deliveryaddress': (ctx) => const DeliveryAddressSelector(),
             '/onarrivalMessage': (ctx) => const OnArrivalMessage(),
+            '/resetPassword': (ctx) => const ResetPassword(),
           },
         ),
       ),

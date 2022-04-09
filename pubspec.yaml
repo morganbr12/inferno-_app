@@ -57,6 +57,7 @@ dependencies:
   shared_preferences: ^2.0.13
   flutter_secure_storage: ^5.0.2
   rename: ^2.0.1
+  firebase_storage: ^10.2.11
 
 dev_dependencies:
   flutter_test:

@@ -21,7 +21,7 @@ class Auth {
         email: map['email'],
         fullName: map['fullName'],
         phoneNumber: map['phoneNumber'],
-        photoUrl: map['imageUrl']);
+        photoUrl: map['photoUrl']);
   }
 
   // sending data to our server

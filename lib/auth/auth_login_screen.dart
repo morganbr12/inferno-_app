@@ -52,8 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
           if (value!.isEmpty) {
             return 'Enter email';
           }
-          if (!RegExp(r'^[a-zA-Z0+_.-1-9]+@[a-zA-Z0.-]+.[a-z]')
-              .hasMatch(value)) {
+          if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,5}').hasMatch(value)) {
             return "Enter a valid email";
           } else {
             return null;
@@ -101,6 +100,19 @@ class _LoginScreenState extends State<LoginScreen> {
           border: InputBorder.none,
           hintText: 'Password...',
           prefixIcon: Icon(Icons.vpn_key),
+        ),
+      ),
+    );
+
+    final forgottenPassword = TextButton(
+      onPressed: () {
+        Navigator.of(context).pushNamed('/resetPassword');
+      },
+      child: const Text(
+        'Forgotten Password?',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 11,
         ),
       ),
     );
@@ -198,9 +210,18 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 20.h,
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                forgottenPassword,
+                              ],
+                            ),
                           ),
+                          // SizedBox(
+                          //   height: 8.h,
+                          // ),
                           isLodaing
                               ? CircularProgressIndicator(
                                   color: Theme.of(context).primaryColor,
