@@ -122,7 +122,10 @@ class _InfernoAppState extends State<InfernoApp> {
             fontFamily: 'Poppins',
             textTheme: ThemeData.light().textTheme.copyWith(
                   bodyText1: const TextStyle(
-                      fontFamily: 'Poppins', fontSize: 14, color: Colors.white),
+                    fontFamily: 'Poppins',
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
                   headline5: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

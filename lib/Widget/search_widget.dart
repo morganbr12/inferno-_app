@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:inferno/models/search_choose.dart';
+import 'package:location/location.dart';
+import '../helper/location_helper.dart';
+// import 'package:provider/provider.dart';
+// import 'package:inferno/models/search_choose.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   @override
@@ -29,16 +31,14 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // final currentLoc = Provider.of<CurrentLocationFilter>(context);
-    // TODO: implement buildSuggestions
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: ListView(
         children: [
-          InkWell(
-            onTap: () {},
-            child: const ListTile(
+          const InkWell(
+            onTap: _getUserLocation,
+            child: ListTile(
               leading: Icon(
                 Icons.location_on,
                 color: Colors.black,
@@ -82,3 +82,11 @@ class CustomSearchDelegate extends SearchDelegate {
 //     );
 //   }
 // }
+
+Future<void> _getUserLocation() async {
+  final locData = await Location().getLocation();
+  final staticLoationName = LocationHelper.generateLocationAddress(
+    locData.latitude,
+    locData.longitude,
+  );
+}

@@ -90,7 +90,8 @@ class Products with ChangeNotifier {
   }
 
   Future<void> fectureAndSetProduct() async {
-    const url = "https://inferno-app-dbdb0.firebaseio.com/foodProducts.json";
+    const url =
+        "https://inferno-app-dbdb0-default-rtdb.firebaseio.com/foodProducts.json";
     try {
       final response = await http.get(Uri.parse(url));
       final extractedData = json.decode(response.body) as Map<String, dynamic>;

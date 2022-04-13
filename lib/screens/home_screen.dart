@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inferno/screens/love.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +24,7 @@ class InfernoHomePage extends StatefulWidget {
 }
 
 class _InfernoHomePageState extends State<InfernoHomePage> {
+  String? _showLocationName;
   int _selectedIndex = 0;
 
   static const List<Widget> _tapNavButton = [
@@ -112,11 +113,46 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
         ),
       ),
     );
-
+    final location = Container(
+      margin: const EdgeInsets.all(6),
+      padding: const EdgeInsets.only(right: 20),
+      child: InkWell(
+        onTap: () {
+          showSearch(
+            context: context,
+            delegate: CustomSearchDelegate(),
+          );
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Feather.map_pin,
+              size: 20,
+              color: Theme.of(context).primaryColor,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 6.0),
+              child: Text(
+                '$_showLocationName',
+                style: Theme.of(context).appBarTheme.titleTextStyle,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 6.0),
+              child: Icon(
+                Icons.keyboard_arrow_down_sharp,
+                color: Theme.of(context).primaryColor,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        title: title,
+        title: _showLocationName == null ? title : location,
         centerTitle: true,
         leading: drawerConnect,
         actions: [
@@ -159,15 +195,23 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
           backgroundColor: Colors.white,
         ),
       ),
+
+      // giving the shape for the bottom navigation bar
+
       bottomNavigationBar: SizedBox(
-          // height: 62.h,
-          child: BottomAppBar(
-              shape: const CircularNotchedRectangle(),
-              notchMargin: 0.01,
-              clipBehavior: Clip.hardEdge,
-              child: Container(
-                  height: kBottomNavigationBarHeight,
-                  child: Container(child: bottonNavBar(context))))),
+        height: 58.h,
+        child: BottomAppBar(
+          shape: const CircularNotchedRectangle(),
+          notchMargin: 0.01,
+          clipBehavior: Clip.hardEdge,
+          child: SizedBox(
+            height: kBottomNavigationBarHeight,
+            child: Container(
+              child: bottonNavBar(context),
+            ),
+          ),
+        ),
+      ),
     );
   }
 
