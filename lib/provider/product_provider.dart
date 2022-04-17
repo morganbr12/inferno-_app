@@ -9,39 +9,11 @@ import '../models/list.dart';
 class Products with ChangeNotifier {
   // ignore: non_constant_identifier_names
   List<Items> FOOD_ITEM = [
-    Items(
-      id: 'a',
-      title: 'Pizza',
-      shortTitle: 'Cheezy Mozarella',
-      imageUrl: 'assets/images/foodImages/pizza.png',
-      price: 22,
-      duration: 30 - 45,
-      rate: 0,
-      description: ' ultimate in burgers. 4 beef patties, '
-          'sandwiched between two fresh mega buns, surrounded '
-          'by an army of veg and encapsulated in 5 cheese slices. '
-          'This is accompanied by a platoon of fries '
-          '[yam, potato, cassava, or cocoyam]',
-    ),
     // Items(
-    //   id: 'b',
-    //   title: 'Burger',
+    //   id: 'a',
+    //   title: 'Pizza',
     //   shortTitle: 'Cheezy Mozarella',
-    //   imageUrl: 'assets/images/foodImages/burger.png',
-    //   price: 50,
-    //   duration: 30 - 45,
-    //   rate: 0,
-    //   description: 'The ultimate in burgers. 4 beef patties, '
-    //       'sandwiched between two fresh mega buns, surrounded '
-    //       'by an army of veg and encapsulated in 5 cheese slices. '
-    //       'This is accompanied by a platoon of fries '
-    //       '[yam, potato, cassava, or cocoyam].',
-    // ),
-    // Items(
-    //   id: 'c',
-    //   title: 'Burger',
-    //   shortTitle: 'Cheezy Mozarella',
-    //   imageUrl: 'assets/images/foodImages/kakratua.png',
+    //   imageUrl: 'assets/images/foodImages/pizza.png',
     //   price: 22,
     //   duration: 30 - 45,
     //   rate: 0,
@@ -52,11 +24,11 @@ class Products with ChangeNotifier {
     //       '[yam, potato, cassava, or cocoyam]',
     // ),
     // Items(
-    //   id: 'd',
-    //   title: 'Burger',
+    //   id: 'a',
+    //   title: 'Pizza',
     //   shortTitle: 'Cheezy Mozarella',
-    //   imageUrl: 'assets/images/foodImages/kakratua.png',
-    //   price: 50,
+    //   imageUrl: 'assets/images/foodImages/pizza.png',
+    //   price: 22,
     //   duration: 30 - 45,
     //   rate: 0,
     //   description: ' ultimate in burgers. 4 beef patties, '
@@ -66,11 +38,11 @@ class Products with ChangeNotifier {
     //       '[yam, potato, cassava, or cocoyam]',
     // ),
     // Items(
-    //   id: 'e',
-    //   title: 'Burger',
+    //   id: 'a',
+    //   title: 'Pizza',
     //   shortTitle: 'Cheezy Mozarella',
-    //   imageUrl: 'assets/images/foodImages/kakratua.png',
-    //   price: 70,
+    //   imageUrl: 'assets/images/foodImages/pizza.png',
+    //   price: 22,
     //   duration: 30 - 45,
     //   rate: 0,
     //   description: ' ultimate in burgers. 4 beef patties, '
@@ -78,7 +50,7 @@ class Products with ChangeNotifier {
     //       'by an army of veg and encapsulated in 5 cheese slices. '
     //       'This is accompanied by a platoon of fries '
     //       '[yam, potato, cassava, or cocoyam]',
-    // )
+    // ),
   ];
 
   List<Items> get _FOOD_ITEM {
@@ -91,7 +63,7 @@ class Products with ChangeNotifier {
 
   Future<void> fectureAndSetProduct() async {
     const url =
-        "https://inferno-app-dbdb0-default-rtdb.firebaseio.com/foodProducts.json";
+        "https://inferno-app-dbdb0-default-rtdb.firebaseio.com/foodProduct.json";
     try {
       final response = await http.get(Uri.parse(url));
       final extractedData = json.decode(response.body) as Map<String, dynamic>;

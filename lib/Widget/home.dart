@@ -5,7 +5,7 @@ import '../Widget/popular_food.dart';
 // import '../Widget/products.dart';
 import 'package:provider/provider.dart';
 import '../provider/product_provider.dart';
-import '../Widget/choose_cati.dart';
+// import '../Widget/choose_cati.dart';
 import '../Widget/top_container.dart';
 // import '../Widget/app_bar.dart' as app;
 

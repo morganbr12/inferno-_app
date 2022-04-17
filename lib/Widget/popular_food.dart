@@ -69,7 +69,7 @@ class PopularFood extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: double.maxFinite,
                         height: 185.h,
                         child: Row(
@@ -149,10 +149,10 @@ class PopularFood extends StatelessWidget {
                                 bottomLeft: Radius.circular(15),
                                 topRight: Radius.circular(15),
                               )),
-                          child: const Padding(
+                          child: Padding(
                             padding: EdgeInsets.only(top: 12.0),
                             child: Text(
-                              '30 - 34min',
+                              '${products.duration} Min',
                               textAlign: TextAlign.center,
                             ),
                           ),

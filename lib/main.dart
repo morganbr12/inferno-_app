@@ -20,7 +20,7 @@ import './provider/product_provider.dart';
 
 import 'screens/track_order_screen.dart';
 import './screens/cart_fill.dart';
-import './screens/welocme_screen.dart';
+import 'auth/welocme_screen.dart';
 import 'auth/auth_login_screen.dart';
 import './auth/otp_code_verify.dart';
 import './auth/otp_verify_login.dart';

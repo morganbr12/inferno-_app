@@ -198,17 +198,14 @@ class _InfernoHomePageState extends State<InfernoHomePage> {
 
       // giving the shape for the bottom navigation bar
 
-      bottomNavigationBar: SizedBox(
-        height: 58.h,
-        child: BottomAppBar(
-          shape: const CircularNotchedRectangle(),
-          notchMargin: 0.01,
-          clipBehavior: Clip.hardEdge,
-          child: SizedBox(
-            height: kBottomNavigationBarHeight,
-            child: Container(
-              child: bottonNavBar(context),
-            ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 0.01,
+        clipBehavior: Clip.hardEdge,
+        child: SizedBox(
+          height: kBottomNavigationBarHeight,
+          child: Container(
+            child: bottonNavBar(context),
           ),
         ),
       ),

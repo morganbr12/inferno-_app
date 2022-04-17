@@ -33,8 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final emailLogin = Container(
-      padding: const EdgeInsets.only(left: 5, right: 0, bottom: 4),
-      height: 46,
+      padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
+      // height: 46,
       width: MediaQuery.of(context).size.width * 0.8,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     final passwordFill = Container(
       padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
-      height: 46,
+      // height: 46,
       width: MediaQuery.of(context).size.width * 0.8,
       decoration: BoxDecoration(
         // border: Border.all(color: Colors.white),
@@ -95,10 +95,14 @@ class _LoginScreenState extends State<LoginScreen> {
           password = value;
         },
         keyboardType: TextInputType.visiblePassword,
+        textAlign: TextAlign.justify,
         decoration: const InputDecoration(
           enabledBorder: InputBorder.none,
           border: InputBorder.none,
           hintText: 'Password...',
+          hintStyle: TextStyle(
+            fontFamily: "Poppins",
+          ),
           prefixIcon: Icon(Icons.vpn_key),
         ),
       ),
@@ -142,21 +146,26 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     return Scaffold(
-      body: Stack(
-        children: [
-          Image.asset(
-            'assets/images/background/Component.jpg',
-            fit: BoxFit.cover,
-            height: double.maxFinite,
-            width: MediaQuery.of(context).size.width,
-          ),
-          Container(
-            height: double.maxFinite,
-            width: double.maxFinite,
-            decoration: BoxDecoration(color: Colors.black.withOpacity(0.7)),
-          ),
-          Center(
-            child: SingleChildScrollView(
+      body: SafeArea(
+        top: false,
+        bottom: false,
+        right: false,
+        left: false,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              'assets/images/background/Component.jpg',
+              fit: BoxFit.cover,
+              height: double.maxFinite,
+              width: MediaQuery.of(context).size.width,
+            ),
+            Container(
+              height: double.maxFinite,
+              width: double.maxFinite,
+              decoration: BoxDecoration(color: Colors.black.withOpacity(0.7)),
+            ),
+            Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -170,11 +179,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 350,
                     margin: const EdgeInsets.symmetric(horizontal: 10),
                     padding: const EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).backgroundColor.withOpacity(0.9),
+                      // color: Theme.of(context).backgroundColor.withOpacity(0.9),
+                      color: Colors.grey.withOpacity(0.3),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Center(
@@ -188,6 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               fontWeight: FontWeight.bold,
                               fontSize: 34,
                               color: Colors.white,
+                              fontFamily: 'Poppins',
                             ),
                           ),
                           SizedBox(
@@ -237,6 +247,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 "Don't have an account?",
                                 style: TextStyle(
                                   color: Theme.of(context).accentColor,
+                                  fontFamily: 'Poppins',
                                 ),
                               ),
                               TextButton(
@@ -250,7 +261,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: const Text(
                                   'Sign Up',
                                   style: TextStyle(
-                                      color: Color.fromRGBO(203, 160, 68, 1)),
+                                    color: Color.fromRGBO(203, 160, 68, 1),
+                                    fontFamily: 'Poppins',
+                                  ),
                                 ),
                               )
                             ],
@@ -264,9 +277,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   )
                 ],
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -37,10 +37,10 @@ class _HomePageTopContainerState extends State<HomePageTopContainer> {
             borderRadius: true,
             images: const [
               ExactAssetImage("assets/images/carouselim.png"),
-              NetworkImage(
-                  'https://cdn-images-1.medium.com/max/2000/1*GqdzzfB_BHorv7V2NV7Jgg.jpeg'),
-              NetworkImage(
-                  'https://cdn-images-1.medium.com/max/2000/1*wnIEgP1gNMrK5gZU7QS0-A.jpeg'),
+              // NetworkImage(
+              //     'https://cdn-images-1.medium.com/max/2000/1*GqdzzfB_BHorv7V2NV7Jgg.jpeg'),
+              // NetworkImage(
+              //     'https://cdn-images-1.medium.com/max/2000/1*wnIEgP1gNMrK5gZU7QS0-A.jpeg'),
             ],
           ),
         ),

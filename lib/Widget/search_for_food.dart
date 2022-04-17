@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class SearchForFood extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
-    // TODO: implement buildActions
     return [];
   }
 

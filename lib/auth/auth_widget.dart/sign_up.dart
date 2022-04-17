@@ -53,7 +53,7 @@ class _SignUpPageState extends State<SignUpPage> {
               // height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width - 20,
               decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
+                color: Colors.grey.withOpacity(0.3),
                 borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(30),
                   topLeft: Radius.circular(30),
