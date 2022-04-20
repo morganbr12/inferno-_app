@@ -13,7 +13,7 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '3'
+    flutterVersionCode = '5'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
@@ -54,7 +54,7 @@ android {
         applicationId "com.senkwa.inferno"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 3
+        versionCode 5
         versionName flutterVersionName
     }
 
@@ -69,8 +69,13 @@ android {
    buildTypes {
        release {
            signingConfig signingConfigs.release
+           ndk {
+                debugSymbolLevel 'SYMBOL_TABLE'
+            }
        }
    }
+
+   ndkVersion "24.0.8215888"
 
 }
 
