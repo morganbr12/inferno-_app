@@ -174,6 +174,17 @@ class _ProfileSettingsPageState extends State<ProfileSettingsPage> {
                             fontWeight: FontWeight.bold,
                             fontFamily: "Poppins"),
                       ),
+                    ),
+                    TextButton(
+                      onPressed: () => deleteAccount(context),
+                      child: const Text(
+                        'Delete Account',
+                        style: TextStyle(
+                            color: Color.fromRGBO(219, 29, 29, 1),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Poppins"),
+                      ),
                     )
                   ],
                 ),
@@ -184,6 +195,12 @@ class _ProfileSettingsPageState extends State<ProfileSettingsPage> {
 
   Future<void> signOut(BuildContext ctx) async {
     await FirebaseAuth.instance.signOut();
+
+    Navigator.of(context).pushNamedAndRemoveUntil("/login", (route) => false);
+  }
+
+  Future<void> deleteAccount(BuildContext context) async {
+    await FirebaseAuth.instance.currentUser!.delete();
     Navigator.of(context).pushNamedAndRemoveUntil("/login", (route) => false);
   }
 }

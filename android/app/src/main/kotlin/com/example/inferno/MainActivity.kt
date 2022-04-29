@@ -1,4 +1,4 @@
-package com.senkwa.inferno
+package com.dalystTek.inferno
 
 import io.flutter.embedding.android.FlutterActivity
 

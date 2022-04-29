@@ -58,11 +58,14 @@ class _LoginScreenState extends State<LoginScreen> {
             return null;
           }
         },
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
             enabledBorder: InputBorder.none,
             border: InputBorder.none,
             hintText: 'Email...',
-            prefixIcon: Icon(Icons.email)
+            prefixIcon: Icon(
+              Icons.email,
+              color: Colors.black.withOpacity(0.3),
+            )
             // suffixIcon: Icon(Icons.keyboard_arrow_down_outlined),
             ),
       ),
@@ -96,14 +99,17 @@ class _LoginScreenState extends State<LoginScreen> {
         },
         keyboardType: TextInputType.visiblePassword,
         textAlign: TextAlign.justify,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           enabledBorder: InputBorder.none,
           border: InputBorder.none,
           hintText: 'Password...',
-          hintStyle: TextStyle(
+          hintStyle: const TextStyle(
             fontFamily: "Poppins",
           ),
-          prefixIcon: Icon(Icons.vpn_key),
+          prefixIcon: Icon(
+            Icons.vpn_key,
+            color: Colors.black.withOpacity(0.3),
+          ),
         ),
       ),
     );
